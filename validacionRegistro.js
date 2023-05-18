@@ -4,7 +4,8 @@ function validarFormulario() {
     var nombres = document.getElementById("nombres").value.trim();
     var dni = document.getElementById("dni").value.trim();
     var apellidos = document.getElementById("apellidos").value.trim();
-    var mail = document.getElementById("mail");
+    var mail = document.getElementById("mail").value.trim();
+    
     var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
     // Verificar si algún campo está en blanco
@@ -43,7 +44,7 @@ function validarFormulario() {
       }
     }
 
-    if( validEmail.test(mail.value) ){
+    if( validEmail.test(mail) ){
    
   }else{
       alert('En el campo "email" complete un email válido');
