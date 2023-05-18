@@ -58,6 +58,7 @@ body {
 .contenido {
     display: flex;
     grid-area: contenido;
+    justify-content: center;
     background-color: white;
 }
 
@@ -169,6 +170,8 @@ footer {
 /* Definicion de los estilos de las cosas que estan el el contenido*/
 
 .formulario {
+    min-width: 400px;
+    max-width: 600px;
     background-color: rgb(242, 242, 242);
     margin: 10px 0px 10px 10px;
     width: 65%;
@@ -189,6 +192,8 @@ footer {
 }
 
 .formulario2 {
+    min-width: 200px;
+    max-width: 300px;
     background-color: rgb(242, 242, 242);
     margin: 10px 10px 10px 0px;
     width: 35%;
@@ -432,6 +437,8 @@ p {
     }
 
     .formulario2 {
+        min-width: 400px;
+    max-width: 600px;
         margin: 0px 5px 5px 5px;
         border-radius: 0px 0px 30px 30px;
         width: auto;
