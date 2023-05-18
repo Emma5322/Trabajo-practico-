@@ -24,18 +24,18 @@
                     <h1>Registrate</h1>
                     <h3>Sumá millas y comenzá a disfrutar de tu próximo viaje</h3>
                 </div>
-                <form action="" target="">
+                <form onsubmit="return validarFormulario()">
                     <label for=""> DNI: </label>
-                    <input type="number" required maxlength="8">
+                    <input type="text" id="dni" name="dni">
                     <br>
                     <label for=""> Nombres/s: </label>
-                    <input type="text" required>
+                    <input type="text"  id="nombres">
                     <br>
                     <label for=""> Apellido/s: </label>
-                    <input type="text" required>
+                    <input type="text" id="apellidos">
                     <br>
                     <label for=""> Mail: </label>
-                    <input type="email" required maxlength="30">
+                    <input type="text" id="mail">
                     <br>
                     <label for=""> Nacionalidad: </label>
                     <select name="Pais">
@@ -58,7 +58,9 @@
         <footer>
             <script type="text/javascript" src="footer.js"></script>
         </footer>
+        
     </div>
+    <script type="text/javascript" src="validacionRegistro.js"></script>
 </body>
 
 </html>
