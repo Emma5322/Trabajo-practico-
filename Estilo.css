@@ -222,15 +222,27 @@ input {
     border-style: solid;
 }
 
+
 label {
     margin: 10px;
 }
 
 button {
+    background-color: rgb(180, 179, 180);
     display: block;
     margin: 10px;
 padding: 10px;
+border-radius: 3px;
+border: 1px solid;
 
+}
+.select {
+    background-color: rgb(180, 179, 180);
+    display: block;
+    margin: 10px;
+padding: 10px;
+border-radius: 3px;
+border:  1px solid;
 }
 
 

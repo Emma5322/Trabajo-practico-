@@ -12,14 +12,13 @@
 
 </head>
 
-
 <body>
 
     <div class="conteiner">
         <script type="text/javascript" src="header.js"></script>
 
         <div class="izq"></div>
-        
+
         <div class="der"></div>
 
         <div class="contenido">
@@ -30,16 +29,88 @@
                         <h1>Buscá tu vuelo</h1>
                     </div>
                     <div>
-                        <label for="">Origen</label>
-                        <input type="text">
-                        <label for="">Destino</label>
-                        <input type="text">
+                        <label for="" id="origen">Origen</label>
+                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <datalist id="browsers">
+                            <option value="Buenos Aires - Argentina">
+                            <option value="El Calafate - Argentina">
+                            <option value="Catamarca - Argentina">
+                            <option value="Comodoro Rivadavia - Argentina">
+                            <option value="Córdoba - Argentina">
+                            <option value="Corrientes - Argentina">
+                            <option value="Formosa - Argentina">
+                            <option value="Iguazú - Argentina">
+                            <option value="Jujuy - Argentina">
+                            <option value="La Rioja - Argentina">
+                            <option value="Catamarca - Argentina">
+                            <option value="Mar del Plata - Argentina">
+                            <option value="Mendoza - Argentina">
+                            <option value="Neuquén - Argentina">
+                            <option value="Paraná - Argentina">
+                            <option value="Posadas - Argentina">
+                            <option value="Resistencia - Argentina"></option>
+                            <option value="Río Gallegos - Argentina"></option>
+                            <option value="Rosario - Argentina"></option>
+                            <option value="Salta - Argentina"></option>
+                            <option value="San Carlos de Bariloche - Argentina"></option>
+                            <option value="San Juan - Argentina"></option>
+                            <option value="San Luis - Argentina"></option>
+                            <option value="Tucumán - Argentina"></option>
+                            <option value="Santa Fe - Argentina"></option>
+                            <option value="Santa Rosa - Argentina"></option>
+                            <option value="Santiago del Estero - Argentina"></option>
+                            <option value="Trelew - Argentina"></option>
+                            <option value="Ushuaia - Argentina"></option>
+                            <option value="Viedma - Argentina"></option>
+                            <option value="Chapelco - Argentina"></option>
+                        </datalist>
+                        
+                        <label for="" id="destino">Destino</label>
+                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <datalist class="datalist"id="browsers">
+                            <option value="Buenos Aires - Argentina">
+                                <option value="El Calafate - Argentina">
+                                <option value="Catamarca - Argentina">
+                                <option value="Comodoro Rivadavia - Argentina">
+                                <option value="Córdoba - Argentina">
+                                <option value="Corrientes - Argentina">
+                                <option value="Formosa - Argentina">
+                                <option value="Iguazú - Argentina">
+                                <option value="Jujuy - Argentina">
+                                <option value="La Rioja - Argentina">
+                                <option value="Catamarca - Argentina">
+                                <option value="Mar del Plata - Argentina">
+                                <option value="Mendoza - Argentina">
+                                <option value="Neuquén - Argentina">
+                                <option value="Paraná - Argentina">
+                                <option value="Posadas - Argentina">
+                                <option value="Resistencia - Argentina"></option>
+                                <option value="Río Gallegos - Argentina"></option>
+                                <option value="Rosario - Argentina"></option>
+                                <option value="Salta - Argentina"></option>
+                                <option value="San Carlos de Bariloche - Argentina"></option>
+                                <option value="San Juan - Argentina"></option>
+                                <option value="San Luis - Argentina"></option>
+                                <option value="Tucumán - Argentina"></option>
+                                <option value="Santa Fe - Argentina"></option>
+                                <option value="Santa Rosa - Argentina"></option>
+                                <option value="Santiago del Estero - Argentina"></option>
+                                <option value="Trelew - Argentina"></option>
+                                <option value="Ushuaia - Argentina"></option>
+                                <option value="Viedma - Argentina"></option>
+                                <option value="Chapelco - Argentina"></option>
+                            </datalist>
                     </div>
                     <div>
-                        <button>Ida y vuelta</button>
-                        <button>Solo Ida</button>
-                        <button>Multiple destinos</button>
-                        <button>Todas las clases</button>
+                        <button id="idayvuelta">Ida y vuelta</button>
+                        <button id="soloida">Solo Ida</button>
+                        <button id="multipledestino">Multiple destinos</button>
+                        <select class="select" name="Pais" id="clase">
+                            <option value="1">Argentina</option>
+                            <option value="2">Brasil</option>
+                            <option value="3">Bolivia</option>
+                            </select>
+                            
                     </div>
                     <div>
                         <label for="">Ida</label>
@@ -52,66 +123,67 @@
             </div>
             <div class="formulario2">
                 <form action="">
-                <div class="barrasuperior2">
-                    <h1>Pasajeros</h1>
-                    <div>
-                        <label for="">Adultos</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label for="">Niños</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label for="">Bebés</label>
-                        <input type="text">
-                        <input type="submit" value="Buscar">
-                    </div>
+                    <div class="barrasuperior2">
+                        <h1>Pasajeros</h1>
+                        <div>
+                            <label for="">Adultos</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label for="">Niños</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label for="">Bebés</label>
+                            <input type="text">
+                            <input type="submit" value="Buscar">
+                        </div>
                 </form>
-                        
-                    
-                </div>
+
+
             </div>
         </div>
+    </div>
 
 
 
-        <div class="ofertas">
+    <div class="ofertas">
+        <div>
+            <h1>¡Aprovechá nuestras ofertas!</h1>
+        </div>
+        <div class="tablaviaje">
             <div>
-                <h1>¡Aprovechá nuestras ofertas!</h1>
+                <img src="Images/Rio de janeiro.jpg" alt="">
+                <label for="">Rio de janeiro</label>
+                <p>$54900</p>
             </div>
-            <div class="tablaviaje">
-                <div>
-                    <img src="Images/Rio de janeiro.jpg" alt="">
-                    <label for="">Rio de janeiro</label>
-                    <p>$54900</p>
-                </div>
-                <div>
-                    <img src="Images/Londres.jpg" alt="">
-                    <label for="">Londres</label>
-                    <p>$109899</p>
-                </div>
-                <div>
-                    <img src="Images/Francia.jpg" alt="">
-                    <label for="">Paris</label>
-                    <p>$119899</p>
-                </div>
-                <div>
-                    <img src="Images/New york.jpg" alt="">
-                    <label for="">New york</label>
-                    <p>$95989</p>
-                </div>
+            <div>
+                <img src="Images/Londres.jpg" alt="">
+                <label for="">Londres</label>
+                <p>$109899</p>
+            </div>
+            <div>
+                <img src="Images/Francia.jpg" alt="">
+                <label for="">Paris</label>
+                <p>$119899</p>
+            </div>
+            <div>
+                <img src="Images/New york.jpg" alt="">
+                <label for="">New york</label>
+                <p>$95989</p>
             </div>
         </div>
+    </div>
 
 
 
 
-    
+
     <footer>
         <script type="text/javascript" src="footer.js"></script>
     </footer>
-</div>
+    <script type="text/javascript" src="validacionbuscavuelo"> </script>
+    </div>
 </body>
 
 </html>
