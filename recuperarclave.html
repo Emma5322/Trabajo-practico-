@@ -24,10 +24,9 @@
                 <div class="barrasuperiorinicio">
                     <h1>Recuperar contraseña</h1>
                 </div>
-                <form method="" post>
-
+                <form onsubmit="return validarFormulariorecupero()">
                     <label for="dni">DNI</label>
-                    <input type="text" required>
+                    <input type="number" id="dni" name="dni">
                     <br>
                     <input type="submit" value="Enviar">
                 </form>
@@ -37,6 +36,7 @@
             <script type="text/javascript" src="footer.js"></script>
         </footer>
     </div>
+    <script type="text/javascript" src="validacionrecuperarclave.js"></script>
 </body>
 
 </html>
