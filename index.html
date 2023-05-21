@@ -21,13 +21,13 @@
         <div class="contenido">
 
             <div class="formulario">
-                <form action="">
+                <form  name="buscarvuelo" onsubmit="return validarBusquedaVuelo()">
                     <div class="barrasuperior">
                         <h1>Buscá tu vuelo</h1>
                     </div>
                     <div>
-                        <label for="" id="origen">Origen</label>
-                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="">Origen</label>
+                        <input id="origen" list="browsers" type="text" placeholder="Ingresá una ciudad">
                         <datalist id="browsers">
                             <option value="Buenos Aires - Argentina">
                             <option value="El Calafate - Argentina">
@@ -62,8 +62,8 @@
                             <option value="Chapelco - Argentina"></option>
                         </datalist>
 
-                        <label for="" id="destino">Destino</label>
-                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="">Destino</label>
+                        <input id="destino" list="browsers" type="text" placeholder="Ingresá una ciudad" >
                         <datalist class="datalist" id="browsers">
                             <option value="Buenos Aires - Argentina">
                             <option value="El Calafate - Argentina">
@@ -101,11 +101,11 @@
                         <input type="date" id="inputsalida">
                     </div>
                     <div id="segundo">
-                        <label for="" id="origen2">Origen</label>
-                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
-                        <label for="" id="origen2">Origen</label>
-                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
-                        <label for="" id="labelsalida2">Salida</label>
+                        <label for="">Origen</label>
+                        <input id="origen2" list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="">Destino</label>
+                        <input id="destino2" list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="" >Salida</label>
                         <input type="date" id="inputsalida2">
                     </div>
                     <div>
@@ -123,20 +123,21 @@
                     </div>
                     <div id="dividayvuelta">
                         <label for="" id="ida">Ida</label>
-                        <input type="date">
+                        <input type="date" id="inputida">
                         <label for="" id="labelvuelta">Vuelta</label>
                         <input type="date" id="inputvuelta">
                     </div>
+                    
                 </form>
 
             </div>
             <div class="formulario2">
-                <form action="">
+                <form onsubmit="return validarBusquedaVuelo()">
                     <div class="barrasuperior2">
                         <h1>Pasajeros</h1>
                         <div>
                             <label for="">Adultos</label>
-                            <select>
+                            <select id="adultos">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -147,21 +148,21 @@
                         </div>
                         <div>
                             <label for="">Niños</label>
-                            <select>
-                                <option value="1">0</option>
-                                <option value="2">1</option>
-                                <option value="3">2</option>
-                                <option value="4">3</option>
-                                <option value="5">4</option>
-                                <option value="6">5</option>
+                            <select id="niños">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                         <div>
                             <label for="">Bebés</label>
-                            <select>
-                                <option value="1">0</option>
-                                <option value="2">1</option>
-                                <option value="3">2</option>
+                            <select id="bebes" >
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                             
                         </div>
