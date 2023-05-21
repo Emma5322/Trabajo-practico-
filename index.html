@@ -8,12 +8,9 @@
     <title>Viajes Auricular</title>
     <link rel="icon" href="Images/Viajes auricular.png">
     <link rel="stylesheet" href="Estilo.css">
-
-
 </head>
 
 <body>
-
     <div class="conteiner">
         <script type="text/javascript" src="header.js"></script>
 
@@ -64,59 +61,71 @@
                             <option value="Viedma - Argentina"></option>
                             <option value="Chapelco - Argentina"></option>
                         </datalist>
-                        
+
                         <label for="" id="destino">Destino</label>
                         <input list="browsers" type="text" placeholder="Ingresá una ciudad">
-                        <datalist class="datalist"id="browsers">
+                        <datalist class="datalist" id="browsers">
                             <option value="Buenos Aires - Argentina">
-                                <option value="El Calafate - Argentina">
-                                <option value="Catamarca - Argentina">
-                                <option value="Comodoro Rivadavia - Argentina">
-                                <option value="Córdoba - Argentina">
-                                <option value="Corrientes - Argentina">
-                                <option value="Formosa - Argentina">
-                                <option value="Iguazú - Argentina">
-                                <option value="Jujuy - Argentina">
-                                <option value="La Rioja - Argentina">
-                                <option value="Catamarca - Argentina">
-                                <option value="Mar del Plata - Argentina">
-                                <option value="Mendoza - Argentina">
-                                <option value="Neuquén - Argentina">
-                                <option value="Paraná - Argentina">
-                                <option value="Posadas - Argentina">
-                                <option value="Resistencia - Argentina"></option>
-                                <option value="Río Gallegos - Argentina"></option>
-                                <option value="Rosario - Argentina"></option>
-                                <option value="Salta - Argentina"></option>
-                                <option value="San Carlos de Bariloche - Argentina"></option>
-                                <option value="San Juan - Argentina"></option>
-                                <option value="San Luis - Argentina"></option>
-                                <option value="Tucumán - Argentina"></option>
-                                <option value="Santa Fe - Argentina"></option>
-                                <option value="Santa Rosa - Argentina"></option>
-                                <option value="Santiago del Estero - Argentina"></option>
-                                <option value="Trelew - Argentina"></option>
-                                <option value="Ushuaia - Argentina"></option>
-                                <option value="Viedma - Argentina"></option>
-                                <option value="Chapelco - Argentina"></option>
-                            </datalist>
+                            <option value="El Calafate - Argentina">
+                            <option value="Catamarca - Argentina">
+                            <option value="Comodoro Rivadavia - Argentina">
+                            <option value="Córdoba - Argentina">
+                            <option value="Corrientes - Argentina">
+                            <option value="Formosa - Argentina">
+                            <option value="Iguazú - Argentina">
+                            <option value="Jujuy - Argentina">
+                            <option value="La Rioja - Argentina">
+                            <option value="Catamarca - Argentina">
+                            <option value="Mar del Plata - Argentina">
+                            <option value="Mendoza - Argentina">
+                            <option value="Neuquén - Argentina">
+                            <option value="Paraná - Argentina">
+                            <option value="Posadas - Argentina">
+                            <option value="Resistencia - Argentina"></option>
+                            <option value="Río Gallegos - Argentina"></option>
+                            <option value="Rosario - Argentina"></option>
+                            <option value="Salta - Argentina"></option>
+                            <option value="San Carlos de Bariloche - Argentina"></option>
+                            <option value="San Juan - Argentina"></option>
+                            <option value="San Luis - Argentina"></option>
+                            <option value="Tucumán - Argentina"></option>
+                            <option value="Santa Fe - Argentina"></option>
+                            <option value="Santa Rosa - Argentina"></option>
+                            <option value="Santiago del Estero - Argentina"></option>
+                            <option value="Trelew - Argentina"></option>
+                            <option value="Ushuaia - Argentina"></option>
+                            <option value="Viedma - Argentina"></option>
+                            <option value="Chapelco - Argentina"></option>
+                        </datalist>
+                        <label for="" id="labelsalida">Salida</label>
+                        <input type="date" id="inputsalida">
+                    </div>
+                    <div id="segundo">
+                        <label for="" id="origen2">Origen</label>
+                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="" id="origen2">Origen</label>
+                        <input list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="" id="labelsalida2">Salida</label>
+                        <input type="date" id="inputsalida2">
                     </div>
                     <div>
-                        <button id="idayvuelta">Ida y vuelta</button>
-                        <button id="soloida">Solo Ida</button>
-                        <button id="multipledestino">Multiple destinos</button>
+                        <input type="radio" id="idayvuelta" name="seleccion" onclick="idaVuelta()" checked>
+                        <label for="">Ida y vuelta</label>
+                        <input type="radio" id="soloida" name="seleccion" onclick="soloIda()">
+                        <label for="">Solo ida</label>
+                        <input type="radio" id="multipledestino" name="seleccion" onclick="multipleDestinos()">
+                        <label for="">Multiple destinos</label>
                         <select class="select" name="Pais" id="clase">
-                            <option value="1">Argentina</option>
-                            <option value="2">Brasil</option>
-                            <option value="3">Bolivia</option>
-                            </select>
-                            
+                            <option value="1">Todas las clases</option>
+                            <option value="2">Clase económica</option>
+                            <option value="3">Clase ejecutiva</option>
+                        </select>
                     </div>
-                    <div>
-                        <label for="">Ida</label>
+                    <div id="dividayvuelta">
+                        <label for="" id="ida">Ida</label>
                         <input type="date">
-                        <label for="">Vuelta</label>
-                        <input type="date">
+                        <label for="" id="labelvuelta">Vuelta</label>
+                        <input type="date" id="inputvuelta">
                     </div>
                 </form>
 
@@ -127,15 +136,36 @@
                         <h1>Pasajeros</h1>
                         <div>
                             <label for="">Adultos</label>
-                            <input type="text">
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
                         <div>
                             <label for="">Niños</label>
-                            <input type="text">
+                            <select>
+                                <option value="1">0</option>
+                                <option value="2">1</option>
+                                <option value="3">2</option>
+                                <option value="4">3</option>
+                                <option value="5">4</option>
+                                <option value="6">5</option>
+                            </select>
                         </div>
                         <div>
                             <label for="">Bebés</label>
-                            <input type="text">
+                            <select>
+                                <option value="1">0</option>
+                                <option value="2">1</option>
+                                <option value="3">2</option>
+                            </select>
+                            
+                        </div>
+                        <div>
                             <input type="submit" value="Buscar">
                         </div>
                 </form>
@@ -175,15 +205,12 @@
         </div>
     </div>
 
-
-
-
-
     <footer>
         <script type="text/javascript" src="footer.js"></script>
     </footer>
-    <script type="text/javascript" src="validacionbuscavuelo"> </script>
+    <script type="text/javascript" src="validacionbuscavuelo.js"></script>
     </div>
+
 </body>
 
 </html>
