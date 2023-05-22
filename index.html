@@ -21,7 +21,7 @@
         <div class="contenido">
 
             <div class="formulario">
-                <form  name="buscarvuelo" onsubmit="return validarBusquedaVuelo()">
+                <form name="buscarvuelo" onsubmit="return validarBusquedaVuelo()">
                     <div class="barrasuperior">
                         <h1>Buscá tu vuelo</h1>
                     </div>
@@ -63,7 +63,7 @@
                         </datalist>
 
                         <label for="">Destino</label>
-                        <input id="destino" list="browsers" type="text" placeholder="Ingresá una ciudad" >
+                        <input id="destino" list="browsers" type="text" placeholder="Ingresá una ciudad">
                         <datalist class="datalist" id="browsers">
                             <option value="Buenos Aires - Argentina">
                             <option value="El Calafate - Argentina">
@@ -105,10 +105,10 @@
                         <input id="origen2" list="browsers" type="text" placeholder="Ingresá una ciudad">
                         <label for="">Destino</label>
                         <input id="destino2" list="browsers" type="text" placeholder="Ingresá una ciudad">
-                        <label for="" >Salida</label>
+                        <label for="">Salida</label>
                         <input type="date" id="inputsalida2">
                     </div>
-                    <div>
+                    <div style="flex-direction: row;">
                         <input type="radio" id="idayvuelta" name="seleccion" onclick="idaVuelta()" checked>
                         <label for="">Ida y vuelta</label>
                         <input type="radio" id="soloida" name="seleccion" onclick="soloIda()">
@@ -127,14 +127,14 @@
                         <label for="" id="labelvuelta">Vuelta</label>
                         <input type="date" id="inputvuelta">
                     </div>
-                    
+
                 </form>
 
             </div>
             <div class="formulario2">
                 <form onsubmit="return validarBusquedaVuelo()">
                     <div class="barrasuperior2">
-                        
+
                         <h1>Pasajeros</h1>
                         <div>
                             <label for="">Adultos</label>
@@ -160,12 +160,12 @@
                         </div>
                         <div>
                             <label for="">Bebés</label>
-                            <select id="bebes" >
+                            <select id="bebes">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
-                            
+
                         </div>
                         <div>
                             <input type="submit" value="Buscar">
@@ -209,7 +209,7 @@
         <script type="text/javascript" src="footer.js"></script>
     </footer>
     <script type="text/javascript" src="validacionbuscavuelo.js"></script>
-    
+
 
 </body>
 

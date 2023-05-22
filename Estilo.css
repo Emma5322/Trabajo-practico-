@@ -656,4 +656,7 @@ p {
 .segundo {
     flex-direction: column;
 }
+.inputs{
+    display: flex;  
+}
 }
