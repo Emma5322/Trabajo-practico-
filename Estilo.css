@@ -646,6 +646,7 @@ p {
 }
 .tablapromociones{
     grid-template-columns: auto auto;
+    width: 100%;
 }
 
 .beneficios{
