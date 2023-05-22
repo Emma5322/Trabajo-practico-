@@ -611,7 +611,7 @@ p {
     }
 
     .barrasuperior2 {
-        display: table-cell;
+        
         vertical-align: bottom;
 
         border-radius: 0px 0px 30px 30px;
@@ -653,4 +653,7 @@ p {
     margin: 10px;
 }
 
+.segundo {
+    flex-direction: column;
+}
 }
