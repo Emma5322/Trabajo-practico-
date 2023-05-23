@@ -191,6 +191,11 @@ footer {
     margin: 10px
 }
 
+.formulario div select {
+    border-radius: 20px;
+
+}
+
 .formulario2 {
     min-width: 200px;
     max-width: 300px;
@@ -210,12 +215,23 @@ footer {
 .formulario2 div:nth-child(1n+2) {
     display: flex;
     justify-content: space-between;
-    margin: 10px 10px
+    margin: 10px;
 }
 
-.formulario2 div select{
+.formulario2 div select {
+    border-radius: 5px;
+    margin: 5px;
     width: 40%;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
 }
+
+.formulario2 div input {
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 199, 28);
+}
+
 input {
     border-radius: 5px;
     margin: 5px;
@@ -241,12 +257,12 @@ button {
 }
 
 .select {
-    background-color: rgb(180, 179, 180);
     display: block;
     margin: 10px;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
 }
 
 
@@ -389,14 +405,14 @@ p {
     transform: scale(1.1);
 }
 
-.beneficios {  
+.beneficios {
     display: flex;
     flex-direction: column;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-style: solid;
     border-radius: 25px;
     border-color: rgb(18, 3, 101);
-   margin: 5% 10% 5% 10%;
+    margin: 5% 10% 5% 10%;
 }
 
 /*----------------------------------------------------------------*/
@@ -404,7 +420,7 @@ p {
 /*----------------------------------------------------------------*/
 
 .club {
-    
+
     padding: 0;
     box-sizing: border-box;
     width: 3000;
@@ -417,11 +433,11 @@ p {
 .millas img {
     display: flex;
     justify-content: center;
-  width: 1000px;
+    width: 1000px;
     height: 450px;
     border-radius: 50px;
 
-    
+
 }
 
 .millas p {
@@ -430,7 +446,7 @@ p {
     position: absolute;
     top: 1%;
     left: 5%;
-    
+
 }
 
 .mensaje p {
@@ -447,7 +463,7 @@ p {
 /*----------------------------------------------------------------*/
 
 .tabladeactividades {
-    
+
     width: 90%;
     max-width: 1200px;
     margin: auto;
@@ -489,7 +505,7 @@ p {
 }
 
 .tituloact {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /*----------------------------------------------------------------*/
@@ -525,7 +541,8 @@ p {
             "ofertas ofertas ofertas ofertas"
             "redes redes redes redes";
     }
-    .tablapromociones{
+
+    .tablapromociones {
         grid-template-columns: auto auto;
     }
 
@@ -614,7 +631,7 @@ p {
     }
 
     .barrasuperior2 {
-        
+
         vertical-align: bottom;
 
         border-radius: 0px 0px 30px 30px;
@@ -644,24 +661,27 @@ p {
         width: 95%;
 
     }
-.tabladeactividades{
-    grid-template-columns: auto auto;
-    width: 100%;
-}
-.tablapromociones{
-    grid-template-columns: auto auto;
-    width: 100%;
-}
 
-.beneficios{
-    margin: 10px;
-}
+    .tabladeactividades {
+        grid-template-columns: auto auto;
+        width: 100%;
+    }
 
-.segundo {
-    flex-direction: column;
-}
-.inputs{
-    display: flex;  
-}
+    .tablapromociones {
+        grid-template-columns: auto auto;
+        width: 100%;
+    }
+
+    .beneficios {
+        margin: 10px;
+    }
+
+    .segundo {
+        flex-direction: column;
+    }
+
+    .inputs {
+        display: flex;
+    }
 
 }
