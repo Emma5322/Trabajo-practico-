@@ -209,10 +209,13 @@ footer {
 
 .formulario2 div:nth-child(1n+2) {
     display: flex;
-    justify-content: space-evenly;
-    margin: 10px
+    justify-content: space-between;
+    margin: 10px 10px
 }
 
+.formulario2 div select{
+    width: 40%;
+}
 input {
     border-radius: 5px;
     margin: 5px;
@@ -620,6 +623,7 @@ p {
     }
 
     .barrasuperior2 h1 {
+        display: none;
         border-radius: 0px 0px 30px 30px;
         margin: 0px;
 
@@ -659,4 +663,5 @@ p {
 .inputs{
     display: flex;  
 }
+
 }
