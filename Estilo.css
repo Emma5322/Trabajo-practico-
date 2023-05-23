@@ -76,6 +76,7 @@ footer {
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos el header                           */
+/*----------------------------------------------------------------*/
 
 .logo {
     padding: 10px;
@@ -130,7 +131,6 @@ footer {
 }
 
 
-
 .botonav div {
     justify-content: center;
     padding: 0px;
@@ -168,6 +168,7 @@ footer {
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan el el contenido*/
+/*----------------------------------------------------------------*/
 
 .formulario {
     min-width: 400px;
@@ -268,31 +269,51 @@ button {
 
 .formularioinicio {
     background-color: rgb(242, 242, 242);
-    margin: 10px auto;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    min-width: 400px;
+    margin: 10px;
+    min-width: 500px;
     max-width: 600px;
     width: 50%;
+    text-align: center;
     border-color: black;
     border-style: solid;
     border-radius: 30px;
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
-
 }
 
 .barrasuperiorinicio>h1 {
     background-color: rgb(206, 55, 62);
-
     margin-top: 0px;
+    
+
     border-radius: 30px 30px 0px 0px;
     padding: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
-
 }
 
+.barrasuperiorinicio div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20%;
+}
+
+.barrasuperiorinicio div input {
+    width: 55%;
+}
+
+.barrasuperiorinicio div select {
+    width: 55%;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
+}
+.barrasuperiorinicio div input[type=submit] {
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 199, 28);
+}
 
 .barrasuperior>h1 {
     background-color: rgb(206, 55, 62);
@@ -316,6 +337,7 @@ button {
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan en la oferta*/
+/*----------------------------------------------------------------*/
 
 .ofertas h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -335,7 +357,6 @@ button {
 .tablaviaje div {
     border: 2px;
     flex: 1 0 200px;
-
     margin: 10px;
     padding: 0px;
     background-color: rgb(255, 199, 28);

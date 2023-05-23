@@ -21,35 +21,43 @@
         <div class="der"></div>
         <div class="contenido">
             <div class="formularioinicio">
-                <div class="barrasuperiorinicio">
+                <form onsubmit="return validarFormularioinicio()">
+                   <div class="barrasuperiorinicio">
                     <h1>Iniciar sesión</h1>
-                </div>
-                    <form onsubmit="return validarFormularioinicio()">
+
+                    <div>
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" name="usuario">
-                        <br>
+
+                    </div>
+                    <div>
                         <label for="passw">Contraseña</label>
                         <input type="password" id="passw" name="passw">
-                        <br>
+
+                    </div>
+                    <div>
                         <input type="submit" value="Iniciar">
+                    </div>
+                    
+                        <label for="recordar"> <a href="recuperarclave.html">¿Olvidaste tu contraseña?</a></label>
+                    
+                    
+                        <h4> <a href="registro.html">¿Todavía no te registraste?</a> </h4>
+                    
 
-                        <div class="recordar">
-                            <label for="recordar"> <a href="recuperarclave.html">¿Olvidaste tu contraseña?</a></label>
-                        </div>
-                        <div class="registro">
-                            <h4> <a href="registro.html">¿Todavía no te registraste?</a> </h4>
-                        </div>
-                    </form>
+                    
 
+
+                   </div>
+               </form>
             </div>
-        </div>
 
-    </div>
-    <footer>
-        <script type="text/javascript" src="footer.js"></script>
-    </footer>
-    
-    <script type="text/javascript" src="validacioniniciarsesion.js"></script>
+        </div>
+        <footer>
+            <script type="text/javascript" src="footer.js"></script>
+        </footer>
+
+        <script type="text/javascript" src="validacioniniciarsesion.js"></script>
 </body>
 
 </html>

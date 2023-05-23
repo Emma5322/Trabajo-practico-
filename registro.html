@@ -20,47 +20,56 @@
 
         <div class="contenido">
             <div class="formularioinicio">
-                <div class="barrasuperiorinicio">
-                    <h1>Registrate</h1>
-                    <h3>Sumá millas y comenzá a disfrutar de tu próximo viaje</h3>
-                </div>
                 <form onsubmit="return validarFormulario()">
-                    <label for=""> DNI: </label>
-                    <input type="text" id="dni" name="dni">
-                    <br>
-                    <label for=""> Nombres/s: </label>
-                    <input type="text"  id="nombres">
-                    <br>
-                    <label for=""> Apellido/s: </label>
-                    <input type="text" id="apellidos">
-                    <br>
-                    <label for=""> Mail: </label>
-                    <input type="text" id="mail">
-                    <br>
-                    <label for=""> Nacionalidad: </label>
-                    <select name="Pais">
-                        <option value="1">Argentina</option>
-                        <option value="2">Brasil</option>
-                        <option value="3">Bolivia</option>
-                        <option value="4">Chile</option>
-                        <option value="5">Colombia</option>
-                        <option value="7">Cuba</option>
-                        <option value="8">Paraguay</option>
-                        <option value="9">Perú</option>
-                        <option value="10">Uruguay</option>
-                    </select>
-                    <br>
-                    <input type="submit" value="Registrarme">
-                
+                    <div class="barrasuperiorinicio">
+                        <h1>Registrate</h1>
+                        <h3>Sumá millas y comenzá a disfrutar de tu próximo viaje</h3>
+
+                        <div>
+                            <label for=""> DNI: </label>
+                            <input type="text" id="dni" name="dni">
+                        </div>
+                        <div>
+                            <label for=""> Nombre/s: </label>
+                            <input type="text" id="nombres">
+                        </div>
+                        <div>
+                            <label for=""> Apellido/s: </label>
+                            <input type="text" id="apellidos">
+                        </div>
+                        <div>
+                            <label for=""> Mail: </label>
+                            <input type="text" id="mail">
+                        </div>
+                        <div>
+                            <label for=""> Nacionalidad: </label>
+                            <select name="Pais">
+                                <option value="1">Argentina</option>
+                                <option value="2">Brasil</option>
+                                <option value="3">Bolivia</option>
+                                <option value="4">Chile</option>
+                                <option value="5">Colombia</option>
+                                <option value="7">Cuba</option>
+                                <option value="8">Paraguay</option>
+                                <option value="9">Perú</option>
+                                <option value="10">Uruguay</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="Registrarme">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-
-        <footer>
-            <script type="text/javascript" src="footer.js"></script>
-        </footer>
-        
     </div>
+    
+
+    <footer>
+        <script type="text/javascript" src="footer.js"></script>
+    </footer>
+
+
     <script type="text/javascript" src="validacionRegistro.js"></script>
 </body>
 
