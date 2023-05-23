@@ -11,11 +11,12 @@ body {
 
 /*----------------------------------------------------------------*/
 /* Definir el grid para todo el documento                         */
+/*----------------------------------------------------------------*/
 
 .conteiner {
     display: grid;
 
-    grid-template: auto auto auto auto auto / 10% auto auto auto 10%;
+    grid-template: auto auto auto auto auto/ 10% auto auto auto 10%;
 
     /* Distribuimos el contenido en cada fila */
     grid-template-areas: "header header header header header"
@@ -23,7 +24,9 @@ body {
         "izq contenido contenido contenido der"
         "izq ofertas ofertas ofertas der"
         "redes redes redes redes redes";
-
+ 
+        
+       
 
 }
 
@@ -71,7 +74,8 @@ body {
 footer {
     grid-area: redes;
     background-color: rgb(111, 109, 111);
-}
+    
+    }
 
 
 /*----------------------------------------------------------------*/
@@ -169,6 +173,7 @@ footer {
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan el el contenido*/
 /*----------------------------------------------------------------*/
+
 
 .formulario {
     min-width: 400px;
