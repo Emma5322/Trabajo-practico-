@@ -42,16 +42,16 @@ function validarBusquedaVuelo() {
 
     if (document.buscarvuelo.seleccion[0].checked) {
         if (origen1 === "" || destino1 === "" || ida === "" || vuelta === "") {
-            alert("Por favor, complete todos los campos del formulario1.");
+            alert("Por favor, complete todos los campos de la búsqueda.");
             return false;
         }
         if (origen1 === destino1) {
-            alert("El origen y el destino no pueden ser los mismos");
+            alert("El origen y el destino no pueden ser iguales");
             return false;
         }
 
         if (ida === vuelta) {
-            alert("Las fechas de ida y de vuelta no pueden ser las mismas");
+            alert("Las fechas de ida y de vuelta no pueden ser iguales");
             return false;
         }
 
@@ -63,12 +63,12 @@ function validarBusquedaVuelo() {
 
 if (document.buscarvuelo.seleccion[1].checked) {
     if (origen1 === "" || destino1 === "" || ida === "") {
-        alert("Por favor, complete todos los campos del formulario2.");
+        alert("Por favor, complete todos los campos de la búsqueda.");
         return false;
     }
 
     if (origen1 === destino1) {
-        alert("El origen y el destino no pueden ser los mismos");
+        alert("El origen y el destino no pueden ser igualess");
         return false;
     }
 
@@ -80,16 +80,16 @@ if (document.buscarvuelo.seleccion[1].checked) {
 
 if (document.buscarvuelo.seleccion[2].checked) {
     if (origen1 === "" || destino1 === "" || origen2 === "" || destino2 === "" || salida1 === "" || salida2 === "") {
-        alert("Por favor, complete todos los campos del formulario3.");
+        alert("Por favor, complete todos los campos de la búsqueda.");
         return false;
     }
 
     if (origen1 === destino1) {
-        alert("El origen y el destino no pueden ser los mismos");
+        alert("El origen y el destino no pueden ser iguales");
         return false;
     }
     if (origen2 === destino2) {
-        alert("El origen y el destino no pueden ser los mismos");
+        alert("El origen y el destino no pueden ser iguales");
         return false;
     }
 
@@ -105,10 +105,9 @@ if (document.buscarvuelo.seleccion[2].checked) {
         return false;
 }
 
-
     
 }
-alert("Formulario enviado correctamente.");
+alert("Búsqueda completa.");
 return true;
 
 

@@ -14,6 +14,6 @@ function validarFormulariorecupero() {
     }
 
     // Si todas las validaciones son exitosas, enviar el formulario
-    alert("Formulario enviado correctamente.");
+    alert("Enviamos un email a su casilla para recuperar la contraseña.");
     return true;
 }

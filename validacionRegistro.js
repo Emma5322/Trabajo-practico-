@@ -52,6 +52,6 @@ function validarFormulario() {
 
 
     // Si todas las validaciones son exitosas, enviar el formulario
-    alert("Formulario enviado correctamente.");
+    alert("Registro realizado con éxito. Verifique su casilla de email para validar la cuenta");
     return true;
   }
