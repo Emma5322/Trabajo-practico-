@@ -577,7 +577,6 @@ width: 160px;
     mix-blend-mode: color-burn;
 }
 
-
 .mapa {
     margin: 1% 35% 5% 2%;
 }
@@ -750,4 +749,17 @@ width: 160px;
 	padding: 0px;
 	margin: auto;
 }
+
+.redes {
+    margin: 20px;
+    flex-direction: column-reverse;
+    
+}
+
+.mapa {
+    
+   margin-top: 20px
+    
+}
+
 }
