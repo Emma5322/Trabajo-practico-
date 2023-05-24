@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Vue.js</title>
+
+    <!-- Mi hoja de estilos externa -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>Fetch (API) - Sin usar VUE</h1>
+    <p>En este ejemplo datos remotos, provistos por una <mark>API</mark>, en formato <mark>JSON</mark>, pero <mark>sin usar Vue</mark>.</p>
+    <p>La <mark>API fetch</mark> permite acceder a recursos de un servidor remoto de manera <b>asíncrona</b>.
+       Este tipo de peticiones permiten realizar solicitudes HTTP <b>sin necesidad de recargar toda la página.</b>
+       Para utilizar esta API no es necesario usar ninguna librería. 
+       Funcionan haciendo uso del código nativo del navegador.</p>
+    <p>La API fetch utiliza <mark>promesas</mark>, es decir, devuelve un <b>objeto</b> con dos métodos,
+       uno <mark>then()</mark> y otro <mark>catch()</mark> a los que podemos pasar una función
+       que se invoca cuando se obtiene una respuesta a esa promesa o se produce un error.</p>
+    <hr>
+    <p>En este caso, leemos en datos remotos en formato <mark>JSON</mark> al presionar el boton:</p>
+    <hr>
+
+    <div class="container">
+        <button onclick="traerDatosAPI()">Leer Archivo</button>
+    </div>
+
+    <div id="contenido" >
+        <!-- Aquí insertaremos contenido que recuperamos
+        mediante la API -->
+    </div>
+
+
+    <!-- Nuestro script ------------------------------>
+    <script>
+
+        // Esta función lee los datos remotos, usando fetch
+        function traerDatosAPI() {
+            fetch('https://mocki.io/v1/262b4995-e502-4d96-8a6a-cd51122f86c4') // API a leer
+                // Cuando ha finalizado la lectura
+                // guardo en datos el texto leido:
+                .then(datos => datos.json()) //res va a guardar el dato mediante el método .json()
+                .then(datos => {
+                    // Y luego copio ese texto en #contenido.
+                    contenido.innerHTML +=
+                        `<div class="tarjeta">
+                         <img src = "${datos.results[0].picture.large}"</img><br>
+                         Nombre: ${datos.results[0].name.last}, ${datos.results[0].name.first}<br>
+                         User: ${datos.results[0].login.username}<br>
+                         Pass: ${datos.results[0].login.password}<br>
+                         ${datos.results[0].email}</div>`
+                })
+        }
+    </script>
+
+https://github.com/public-apis/public-apis
+
+https://mocki.io/fake-json-api
+
+https://randomuser.me/api/
+</body>
+
+</html>
