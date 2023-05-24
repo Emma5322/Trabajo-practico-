@@ -449,16 +449,19 @@ p {
 .tituloclub {
 background-color: rgb(206, 55, 62);
     margin-top: 0px;
-    border-radius: 30px 0px 0px 0px;
+    border-radius: 30px 30px 0px 0px;
     padding: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
+    
+    
 }
 .clubmillas {
     width: 70%;
 	max-width: 1100px;
 	margin: auto;
 	padding: 40px;
+    
     
 }
 
@@ -482,6 +485,34 @@ background-color: rgb(206, 55, 62);
     background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/469/230/small/abstract-white-and-gray-light-gradient-lines-background-free-vector.jpg');    
 }
 
+.clientes div{
+    display: flex;
+    width: 100%;
+    
+}
+
+.opiniones div{
+    display: flex;
+    flex-direction: colum;
+
+
+}
+.tarjeta {
+    display: flex;
+    padding: 20px;
+   
+}
+
+.tarjeta img {
+    border-radius: 50%;
+    margin: 20px;
+    height: 160px;
+width: 160px;
+}
+
+.tarjeta div {
+ flex-direction: column;
+}
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan en actividades                */
@@ -711,4 +742,12 @@ background-color: rgb(206, 55, 62);
         display: flex;
     }
 
+  .opiniones div{
+    flex-direction: column;
+  }
+  .clubmillas {
+    width: 95%;
+	padding: 0px;
+	margin: auto;
+}
 }
