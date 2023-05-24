@@ -29,4 +29,5 @@ var usuario = document.getElementById("usuario").value.trim();
     // Si todas las validaciones son exitosas, enviar el formulario
     alert("Inicio de sesión correcto.");
     return true;
+
   }
