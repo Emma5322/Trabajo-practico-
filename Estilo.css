@@ -16,7 +16,7 @@ body {
 .conteiner {
     display: grid;
 
-    grid-template: auto auto auto auto auto/ 10% auto auto auto 10%;
+    grid-template: 100px 80px auto auto auto/ 10% auto auto auto 10%;
 
     /* Distribuimos el contenido en cada fila */
     grid-template-areas: "header header header header header"
@@ -26,7 +26,7 @@ body {
         "redes redes redes redes redes";
  
         
-       
+       min-height: 100vh;
 
 }
 
@@ -445,42 +445,41 @@ p {
 /* Definicion de los estilos de las cosas que estan en clubauri                */
 /*----------------------------------------------------------------*/
 
-.club {
 
-    padding: 0;
-    box-sizing: border-box;
-    width: 3000;
-    height: 2000;
-    overflow: hidden;
+.tituloclub {
+background-color: rgb(206, 55, 62);
+    margin-top: 0px;
+    border-radius: 30px 0px 0px 0px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+.clubmillas {
+    width: 70%;
+	max-width: 1100px;
+	margin: auto;
+	padding: 40px;
+    
+}
+
+.millas1 {
+	display: flex;
+	flex-wrap: wrap; 
+   gap: 1%;
+}
+
+.card {
+    border-radius: 20px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
     position: relative;
-    margin: 0% 10% 5% 25%;
-}
-
-.millas img {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 450px;
-    border-radius: 50px;
-
-
-}
-
-.millas p {
-    font-size: 50px;
-    color: white;
-    position: absolute;
-    top: 1%;
-    left: 5%;
-
-}
-
-.mensaje p {
-    font-size: 20px;
-    color: white;
-    position: absolute;
-    top: 20%;
-    left: 5%;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+    min-height: 200px;
+    width: 49.5%;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/469/230/small/abstract-white-and-gray-light-gradient-lines-background-free-vector.jpg');    
 }
 
 
@@ -548,7 +547,9 @@ p {
 }
 
 
-
+.mapa {
+    margin: 1% 35% 5% 2%;
+}
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos en los distintos media query          */
