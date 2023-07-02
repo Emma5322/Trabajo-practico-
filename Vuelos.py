@@ -1,6 +1,6 @@
 import sqlite3
-from flask import Flask,  jsonify, request
-#from flask_cors import CORS
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 
 # Configurar la conexión a la base de datos SQLite
@@ -57,7 +57,7 @@ class Vuelo:
         self.origen = origen
         self.destino = destino
         self.horariosalida = horariosalida
-        self.horariollegada = horariollegada 
+        self.horariollegada = horariollegada
         self.precio = precio
 
     def modificar(self, nueva_descripcion, nueva_numerovuelo, nueva_asientoslibres, nueva_asientostotales, nueva_asientosocupados, nueva_origen, nueva_destino,  nueva_horariosalida, nueva_horariollegada, nueva_precio):
@@ -69,7 +69,7 @@ class Vuelo:
         self.origen = nueva_origen
         self.destino = nueva_destino
         self.horariosalida = nueva_horariosalida
-        self.horariollegada = nueva_horariollegada 
+        self.horariollegada = nueva_horariollegada
         self.precio = nueva_precio
 
 # -------------------------------------------------------------------
@@ -84,7 +84,7 @@ class Inventario:
         vuelo_existente = self.consultar_vuelo(codigo)
         if vuelo_existente:
             return jsonify({'message': 'Ya existe un vuelo con ese código.'}), 400
-        
+
         nuevo_vuelo = Vuelo(codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, origen, destino,  horariosalida, horariollegada, precio)
         self.cursor.execute("INSERT INTO vuelos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, origen, destino,  horariosalida, horariollegada, precio))
         self.conexion.commit()
@@ -124,7 +124,7 @@ class Inventario:
             self.conexion.commit()
             return jsonify({'message': 'Vuelo eliminado correctamente.'}), 200
         return jsonify({'message': 'Vuelo no encontrado.'}), 404
-    
+
 # -------------------------------------------------------------------
 # Definimos la clase "Reserva vuelo"
 # -------------------------------------------------------------------
@@ -133,8 +133,28 @@ class Inventario:
 
 
 
-    
-x = Inventario()
 
-#x.agregar_vuelo(6, "vuelo a Mendoza", 15, 12, 50, 45, "Buenos Aires", "Mendoza", 10, 12, 50000)
-x.listar_vuelos()
+
+
+
+# -------------------------------------------------------------------
+# Configuración y rutas de la API Flask
+# -------------------------------------------------------------------
+
+app = Flask(__name__)
+CORS(app)
+
+#carrito = Carrito()         # Instanciamos un carrito
+inventario = Inventario()   # Instanciamos un inventario
+#inventario.agregar_vuelo(10, "vuelo a salta",10, 1, 2, 3, "buenos aires", "Salta", 10, 12, 10000)
+
+@app.route('/vuelos', methods=['GET'])
+def obtener_vuelos():
+    return inventario.listar_vuelos()
+
+@app.route('/')
+def index():
+    return ("<h1>API de vuelos a salta<h1>")
+
+if __name__ == '__main__':
+    app.run()
