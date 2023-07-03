@@ -17,17 +17,17 @@ def create_table():
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS vuelos (
-            codigo INTEGER PRIMARY KEY,
+            codigo TEXT PRIMARY KEY,
             descripcion TEXT NOT NULL,
-            numerovuelo INTEGER NOT NULL,
+            numerovuelo TEXT NOT NULL,
             asientoslibres INTEGER NOT NULL,
             asientostotales INTEGER NOT NULL,
             asientosocupados INTEGER NOT NULL,
             origen TEXT NOT NULL,
             destino TEXT NOT NULL,
-            horariosalida INTEGER NOT NULL,
-            horariollegada INTEGER NOT NULL,
-            precio REAL NOT NULL
+            horariosalida TEXT NOT NULL,
+            horariollegada TEXT NOT NULL,
+            precio TEXT NOT NULL
         )
     ''')
     conn.commit()
@@ -90,8 +90,8 @@ class Inventario:
         self.conexion.commit()
         return jsonify({'message': 'Vuelo agregado correctamente.'}), 200
 
-    def consultar_vuelo(self, codigo):
-        self.cursor.execute("SELECT * FROM vuelos WHERE codigo = ?", (codigo,))
+    def consultar_vuelo(self, origen):
+        self.cursor.execute("SELECT * FROM vuelos WHERE origen= ?", (codigo,))
         row = self.cursor.fetchone()
         if row:
             codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, origen, destino,  horariosalida, horariollegada, precio = row
@@ -146,7 +146,23 @@ CORS(app)
 
 #carrito = Carrito()         # Instanciamos un carrito
 inventario = Inventario()   # Instanciamos un inventario
-#inventario.agregar_vuelo(10, "vuelo a salta",10, 1, 2, 3, "buenos aires", "Salta", 10, 12, 10000)
+#inventario.agregar_vuelo("LA505", "Vuelo a Córdoba","B-747", 5, 60, 55, "Buenos Aires", "Córdoba", "8:05", "10:35", "$6000")
+
+@app.route('/vuelos/<string:origen>', methods=['GET'])
+def obtener_vuelo(origen):
+    vuelo = inventario.consultar_vuelo(origen)
+    if vuelo:
+        return jsonify({
+            'codigo': vuelo.codigo,
+            'horariosalida': vuelo.horariosalida,
+            'horariollegada': vuelo.horariollegada,
+            'origen': vuelo.origen,
+            'destino': vuelo.destino,
+            'precio': vuelo.precio,
+            'asientoslibres': vuelo.asientoslibres,
+            'numerovuelo': vuelo.numerovuelo
+        }), 200
+    return jsonify({'message': 'Producto no encontrado.'}), 404
 
 @app.route('/vuelos', methods=['GET'])
 def obtener_vuelos():
@@ -154,7 +170,7 @@ def obtener_vuelos():
 
 @app.route('/')
 def index():
-    return ("<h1>API de vuelos a salta<h1>")
+    return ("<h1>API de vuelos a neuquen<h1>")
 
 if __name__ == '__main__':
     app.run()
