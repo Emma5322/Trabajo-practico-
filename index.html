@@ -149,15 +149,41 @@
             <div class="vuelos" id="itinerariovuelo" style="display: none;">
                 <div class="barrasuperiorvuelo">
                     <h1>Ida</h1>
-                    <label id="horariosalida"></label>
-                    <label id="horariollegada"></label>
-                    <label id="origenvuelo">Origen</label>
-                    <label id="destinovuelo">Destino</label>
+                </div>
+                <div class="pruebaflex">
+                <div class="pruebaflex2">
                     <label id="codigo"></label>
+                    <label id="numerovuelo"></label>
+                </div>
+                <div class="pruebaflex2">
+                    <h1 id="origenvuelo">Origen</h1>
+                    <label id="horariosalida"></label>
+
+                </div>
+
+                <div class="pruebaflex2">
+                    <img src="Images/avion.png" height="40px">
                     <label id="asientoslibres"></label>
+                </div>
+
+                <div class="pruebaflex2">
+                    <h1 id="destinovuelo">Destino</h1>
+                    <label id="horariollegada"></label>
+                </div>  
+                <div class="pruebaflex2">
+                <label >Precio</label>
                     <label id="precio"></label>
                 </div>
+                
+            </div>    
             </div>
+                    
+                    
+                    
+                    
+                    
+            
+
 
 
 
@@ -232,6 +258,19 @@
             var inputsalida = document.getElementById('inputsalida').value;
             var inputsalida2 = document.getElementById('inputsalida2').value;
             
+            console.log(origen)
+            console.log(destino)
+            console.log(idayvuelta)
+            console.log(soloida)
+            console.log(multipledestino)
+            console.log(inputida)
+            console.log(inputvuelta)
+            console.log(origen2)
+            console.log(destino2)
+            console.log(inputsalida)
+            console.log(inputsalida2)
+            
+
             
 
             
@@ -255,6 +294,8 @@
                     document.getElementById('origenvuelo').innerHTML = data.origen;
                     document.getElementById('destinovuelo').innerHTML = data.destino;
                     document.getElementById('precio').innerHTML = data.precio;
+                    document.getElementById('asientoslibres').innerHTML = data.asientoslibres;
+                    document.getElementById('numerovuelo').innerHTML = data.numerovuelo;
 
                     // Mostramos el formulario de modificación y ocultamos el formulario de consulta
                     document.getElementById('formulariovuelo').style.display = 'none';
