@@ -149,33 +149,13 @@
                 <div class="barrasuperiorvuelo">
                     <h1>Ida</h1>
                 </div>
-                <div class="pruebaflex">
-                <div class="pruebaflex2">
-                    <label id="codigo"></label>
-                    <label id="numerovuelo"></label>
-                </div>
-                <div class="pruebaflex2">
-                    <h1 id="origenvuelo">Origen</h1>
-                    <label id="horariosalida"></label>
-
-                </div>
-
-                <div class="pruebaflex2">
-                    <img src="Images/avion.png" height="40px">
-                    <label id="asientoslibres"></label>
-                </div>
-
-                <div class="pruebaflex2">
-                    <h1 id="destinovuelo">Destino</h1>
-                    <label id="horariollegada"></label>
-                </div>  
-                <div class="pruebaflex2">
-                <label >Precio</label>
-                    <label id="precio"></label>
-                </div>
+                <div id="vuelosida">
+                </div> 
                 
-            </div>    
-            </div>
+            </div>  
+ 
+        </div>  
+            
                     
                     
                     
@@ -187,7 +167,7 @@
 
 
 
-        </div>
+        
     
 
 
@@ -286,15 +266,45 @@
                     }
                 })
                 .then(function (data) {
-                    // Mostramos los datos del producto en el formulario de modificación
-                    document.getElementById('horariosalida').innerHTML = data.horariosalida;
-                    document.getElementById('horariollegada').innerHTML = data.horariollegada;
-                    document.getElementById('codigo').innerHTML = data.codigo;
-                    document.getElementById('origenvuelo').innerHTML = data.origen;
-                    document.getElementById('destinovuelo').innerHTML = data.destino;
-                    document.getElementById('precio').innerHTML = data.precio;
-                    document.getElementById('asientoslibres').innerHTML = data.asientoslibres;
-                    document.getElementById('numerovuelo').innerHTML = data.numerovuelo;
+                    var vuelosida = document.getElementById('vuelosida');
+                    console.log(vuelosida)
+
+                    data.forEach(function (vuelo) {
+
+                        
+                    //var fila = document.createElement('tr');
+                    //fila.innerHTML = '<td>' + producto.codigo + '</td>' +
+                        //'<td>' + producto.descripcion + '</td>' +
+                        //'<td align="right">' + producto.cantidad + '</td>' +
+                        //'<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>';
+                    //vuelosida.appendChild(fila);
+                //});
+                var fila = document.createElement('div');
+                console.log(fila)
+                fila.innerHTML = '<div class="pruebaflex">'+
+                    '<div class="pruebaflex2">'+
+                        '<label>'  + vuelo.codigo + '</label>'+
+                        '<label id="numerovuelo">' + vuelo.numerovuelo + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1 id="origenvuelo">' + vuelo.codigoorigen + '</h1>'+
+                        '<label id="horariosalida">' + vuelo.horariosalida + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<img src="Images/avion.png" height="40px">'+
+                        '<label id="asientoslibres">' + vuelo.asientoslibres + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1 id="destinovuelo">' + vuelo.codigodestino + '</h1>'+
+                        '<label id="horariollegada">' + vuelo.horariollegada + '</label>'+
+                        '</div>'+  
+                    '<div class="pruebaflex2">'+
+                        '<label>Precio</label>' +
+                        '<label id="precio">' + vuelo.precio + '</label>' +
+                    '</div>';
+                vuelosida.appendChild(fila);
+                });
+
 
                     // Mostramos el formulario de modificación y ocultamos el formulario de consulta
                     document.getElementById('formulariovuelo').style.display = 'none';
