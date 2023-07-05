@@ -235,7 +235,15 @@ footer {
     padding: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
+
+    
 }
+
+.pruebaflex>div:hover {
+    background-color: grey;
+}
+
+
 .formulario div:nth-child(1n+2) {
     display: flex;
     justify-content: space-evenly;
