@@ -135,6 +135,19 @@ class Inventario:
             vuelos.append(vuelo)
         return jsonify(vuelos), 200
 
+    def listar_vuelos_vuelta(self, codigodestino, codigoorigen):
+        self.cursor.execute("SELECT * FROM vuelos WHERE codigodestino= ? AND codigoorigen = ?", (codigodestino, codigoorigen))
+        rows = self.cursor.fetchall()
+        vuelos = []
+        for row in rows:
+            codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio = row
+            vuelo = {'codigo': codigo, 'descripcion': descripcion, 'numerovuelo': numerovuelo, 'asientoslibres':asientoslibres, 'asientostotales': asientostotales, 'asientosocupados': asientosocupados, 'codigoorigen': codigoorigen, 'origen': origen, 'codigodestino': codigodestino, 'destino': destino, 'horariosalida': horariosalida, 'horariollegada': horariollegada, 'precio': precio}
+            vuelos.append(vuelo)
+        return jsonify(vuelos), 200
+
+
+
+
     def eliminar_vuelo(self, codigo):
         self.cursor.execute("DELETE FROM vuelos WHERE codigo = ?", (codigo,))
         if self.cursor.rowcount > 0:
@@ -166,7 +179,7 @@ inventario = Inventario()   # Instanciamos un inventario
 #inventario.agregar_vuelo("LA515", "Vuelo a Catamarca", "B-747", 15, 60, 45, "CNQ", "Corrientes", "CTC", "Catamarca", "17:05", "19:15", "$7800")
 
 @app.route('/vuelos/<codigoorigen>/<codigodestino>', methods=['GET'])
-def obtener_vuelo(codigoorigen, codigodestino):
+def obtener_vuelo_ida(codigoorigen, codigodestino):
     return inventario.listar_vuelos_ida(codigoorigen, codigodestino)
    # vuelo = inventario.listar_vuelos_ida(codigoorigen, codigodestino)
    # if vuelo:
@@ -183,6 +196,13 @@ def obtener_vuelo(codigoorigen, codigodestino):
      #       'numerovuelo': vuelo.numerovuelo
      #   }), 200
    # return jsonify({'message': 'Producto no encontrado.'}), 404
+
+@app.route('/vuelos/<codigodestino>/<codigoorigen>', methods=['GET'])
+def obtener_vuelo_vuelta(codigodestino, codigoorigen):
+    return inventario.listar_vuelos_vuelta(codigodestino, codigoorigen)
+
+
+
 
 @app.route('/vuelos', methods=['GET'])
 def obtener_vuelos():
