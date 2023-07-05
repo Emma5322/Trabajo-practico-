@@ -48,8 +48,7 @@
                                 <option value="RGL">Río Gallegos - Argentina</option>
                                 <option value="ROS">Rosario - Argentina</option>
                                 <option value="SLA">Salta - Argentina</option>
-                                <option value="BRC">San Carlos de Bariloche - Argentina
-                                </option>
+                                <option value="BRC">San Carlos de Bariloche - Argentina</option>
                                 <option value="UAQ">San Juan - Argentina</option>
                                 <option value="LUQ">San Luis - Argentina</option>
                                 <option value="TUC">Tucumán - Argentina</option>
@@ -144,17 +143,42 @@
             </div>
 
 
-
-            <div class="vuelos" id="itinerariovuelo" style="display: none;">
+        <div id="itinerariovuelo" style="display: none;">
+            <div class="vuelos">
                 <div class="barrasuperiorvuelo">
-                    <h1>Ida</h1>
+                    <div>
+                        <h1>Ida</h1>
+                        <h1 id="origenida">a</h1>
+                        <h1>----------></h1>
+                        <h1 id="destinoida">b</h1>
+                    </div>
                 </div>
                 <div id="vuelosida">
-                </div> 
+
+                </div>
+
                 
-            </div>  
- 
-        </div>  
+            </div>
+            
+            <div class="vuelos">
+                <div class="barrasuperiorvuelo">
+                    <div>
+                    <h1>Vuelta</h1>
+                    <h1 id="origenvuelta">a</h1>
+                    <h1>----------></h1>
+                    <h1 id="destinovuelta">b</h1>
+                </div>
+                </div>
+                
+                <div id="vuelosvuelta">
+                </div> 
+            </div> 
+
+
+        </div>
+    </div>
+
+        
             
                     
                     
@@ -254,7 +278,7 @@
 
             
 
-            // Realizamos la solicitud GET al servidor para obtener los datos del producto
+            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de ida
             fetch(URL + 'vuelos/' + codigoorigen + '/' + codigodestino)
                 .then(function (response) {
                     if (response.ok) {
@@ -292,7 +316,7 @@
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<img src="Images/avion.png" height="40px">'+
-                        '<label id="asientoslibres">' + vuelo.asientoslibres + '</label>'+
+                        '<label id="asientoslibres">Asientos libres: ' + vuelo.asientoslibres + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<h1 id="destinovuelo">' + vuelo.codigodestino + '</h1>'+
@@ -303,6 +327,8 @@
                         '<label id="precio">' + vuelo.precio + '</label>' +
                     '</div>';
                 vuelosida.appendChild(fila);
+                document.getElementById('origenida').innerHTML = vuelo.origen; 
+                document.getElementById('destinoida').innerHTML = vuelo.destino; 
                 });
 
 
@@ -310,11 +336,85 @@
                     document.getElementById('formulariovuelo').style.display = 'none';
                     document.getElementById('formulariobusqueda').style.display = 'none';
                     document.getElementById('itinerariovuelo').style.display = 'block';
+                    
+                    
                 })
                 .catch(function (error) {
                     // Código para manejar errores
-                    alert('Error al obtener los datos del vuelo 2.');
+                    alert('Error al obtener los datos del vuelo ahora.');
                 });
+
+            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de vuelta
+            fetch(URL + 'vuelos/' + codigodestino + '/' + codigoorigen)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al obtener la busqueda vuelo');
+                    }
+                })
+                .then(function (data) {
+                    var vuelosvuelta = document.getElementById('vuelosvuelta');
+                    console.log(vuelosida)
+
+                    data.forEach(function (vuelo) {
+
+                        
+                    //var fila = document.createElement('tr');
+                    //fila.innerHTML = '<td>' + producto.codigo + '</td>' +
+                        //'<td>' + producto.descripcion + '</td>' +
+                        //'<td align="right">' + producto.cantidad + '</td>' +
+                        //'<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>';
+                    //vuelosida.appendChild(fila);
+                //});
+                var fila = document.createElement('div');
+                console.log(fila)
+                fila.innerHTML = '<div class="pruebaflex">'+
+                    '<div class="pruebaflex2">'+
+                        '<label>'  + vuelo.codigo + '</label>'+
+                        '<label id="numerovuelo">' + vuelo.numerovuelo + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1 id="origenvuelo">' + vuelo.codigoorigen + '</h1>'+
+                        '<label id="horariosalida">' + vuelo.horariosalida + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<img src="Images/avion.png" height="40px">'+
+                        '<label id="asientoslibres">Asientos libres: ' + vuelo.asientoslibres + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1 id="destinovuelo">' + vuelo.codigodestino + '</h1>'+
+                        '<label id="horariollegada">' + vuelo.horariollegada + '</label>'+
+                        '</div>'+  
+                    '<div class="pruebaflex2">'+
+                        '<label>Precio</label>' +
+                        '<label id="precio">' + vuelo.precio + '</label>' +
+                    '</div>';
+                vuelosvuelta.appendChild(fila);
+                document.getElementById('origenvuelta').innerHTML = vuelo.origen; 
+                document.getElementById('destinovuelta').innerHTML = vuelo.destino; 
+                });
+
+
+                    // Mostramos el formulario de modificación y ocultamos el formulario de consulta
+                   
+                    
+                    
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al obtener los datos del vuelo ahora.');
+                });
+
+
+
+
+
+
+
+
         });
 
         // Capturamos el evento de envío del formulario de modificación

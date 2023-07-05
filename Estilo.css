@@ -194,6 +194,9 @@ footer {
 .pruebaflex{
     display: flex;
     justify-content: space-evenly;
+    padding-bottom: 10px;
+    border-bottom: dashed;
+
 }
 
 .pruebaflex2{
@@ -206,7 +209,7 @@ footer {
 
 
 .vuelos {
-    min-width: 400px;
+    min-width: 600px;
     max-width: 900px;
     background-color: rgb(242, 242, 242);
     margin: 10px 0px 10px 10px;
@@ -220,7 +223,12 @@ footer {
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
-.barrasuperiorvuelo>h1 {
+
+
+
+.barrasuperiorvuelo div {
+    display: flex;
+    justify-content: space-between;
     background-color: rgb(206, 55, 62);
     margin-top: 0px;
     border-radius: 30px 30px 0px 0px;
