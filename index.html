@@ -146,6 +146,7 @@
         <div id="itinerariovuelo" style="display: none;">
             <div class="vuelos">
                 <div class="barrasuperiorvuelo">
+                    
                     <div>
                         <h1>Ida</h1>
                         <h1 id="origenida">a</h1>
@@ -177,31 +178,6 @@
 
         </div>
     </div>
-
-        
-            
-                    
-                    
-                    
-                    
-                    
-            
-
-
-
-
-
-        
-    
-
-
-
-        
-
-
-
-
-
 
 
     <div class="ofertas">
@@ -243,7 +219,7 @@
         const URL = "https://emmanuel5322.pythonanywhere.com/";
         
 
-        // Capturamos el evento de envío del formulario para mostrar los datos del producto
+        // Capturamos el evento de envío del formulario para mostrar el itinerario de los vuelos de ida
         document.getElementById('formulariovuelo').addEventListener('submit', function (event) {
             event.preventDefault(); // Evitamos que se recargue la página
 
@@ -260,6 +236,7 @@
             var destino2 = document.getElementById('destino2').value;
             var inputsalida = document.getElementById('inputsalida').value;
             var inputsalida2 = document.getElementById('inputsalida2').value;
+    
             
             console.log(codigoorigen)
             console.log(codigodestino)
@@ -291,40 +268,33 @@
                 })
                 .then(function (data) {
                     var vuelosida = document.getElementById('vuelosida');
-                    console.log(vuelosida)
+
 
                     data.forEach(function (vuelo) {
 
-                        
-                    //var fila = document.createElement('tr');
-                    //fila.innerHTML = '<td>' + producto.codigo + '</td>' +
-                        //'<td>' + producto.descripcion + '</td>' +
-                        //'<td align="right">' + producto.cantidad + '</td>' +
-                        //'<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>';
-                    //vuelosida.appendChild(fila);
-                //});
                 var fila = document.createElement('div');
                 console.log(fila)
-                fila.innerHTML = '<div class="pruebaflex">'+
-                    '<div class="pruebaflex2">'+
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="obtenerValor(event)">'+
+                  '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
-                        '<label id="numerovuelo">' + vuelo.numerovuelo + '</label>'+
+                        '<label>' + vuelo.numerovuelo + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
-                        '<h1 id="origenvuelo">' + vuelo.codigoorigen + '</h1>'+
-                        '<label id="horariosalida">' + vuelo.horariosalida + '</label>'+
+                        '<h1>' + vuelo.codigoorigen + '</h1>'+
+                        '<label>' + vuelo.horariosalida + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<img src="Images/avion.png" height="40px">'+
-                        '<label id="asientoslibres">Asientos libres: ' + vuelo.asientoslibres + '</label>'+
+                        '<label>Asientos libres: ' + vuelo.asientoslibres + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
-                        '<h1 id="destinovuelo">' + vuelo.codigodestino + '</h1>'+
-                        '<label id="horariollegada">' + vuelo.horariollegada + '</label>'+
+                        '<h1>' + vuelo.codigodestino + '</h1>'+
+                        '<label>' + vuelo.horariollegada + '</label>'+
                         '</div>'+  
                     '<div class="pruebaflex2">'+
                         '<label>Precio</label>' +
-                        '<label id="precio">' + vuelo.precio + '</label>' +
+                        '<label>' + vuelo.precio + '</label>' 
+                    '</div>'+
                     '</div>';
                 vuelosida.appendChild(fila);
                 document.getElementById('origenida').innerHTML = vuelo.origen; 
@@ -357,40 +327,33 @@
                 })
                 .then(function (data) {
                     var vuelosvuelta = document.getElementById('vuelosvuelta');
-                    console.log(vuelosida)
+
 
                     data.forEach(function (vuelo) {
 
-                        
-                    //var fila = document.createElement('tr');
-                    //fila.innerHTML = '<td>' + producto.codigo + '</td>' +
-                        //'<td>' + producto.descripcion + '</td>' +
-                        //'<td align="right">' + producto.cantidad + '</td>' +
-                        //'<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>';
-                    //vuelosida.appendChild(fila);
-                //});
+
                 var fila = document.createElement('div');
                 console.log(fila)
-                fila.innerHTML = '<div class="pruebaflex">'+
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="obtenerValor(event)">'+
                     '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
-                        '<label id="numerovuelo">' + vuelo.numerovuelo + '</label>'+
+                        '<label>' + vuelo.numerovuelo + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
-                        '<h1 id="origenvuelo">' + vuelo.codigoorigen + '</h1>'+
-                        '<label id="horariosalida">' + vuelo.horariosalida + '</label>'+
+                        '<h1>' + vuelo.codigoorigen + '</h1>'+
+                        '<label>' + vuelo.horariosalida + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<img src="Images/avion.png" height="40px">'+
-                        '<label id="asientoslibres">Asientos libres: ' + vuelo.asientoslibres + '</label>'+
+                        '<label>Asientos libres: ' + vuelo.asientoslibres + '</label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
-                        '<h1 id="destinovuelo">' + vuelo.codigodestino + '</h1>'+
+                        '<h1>' + vuelo.codigodestino + '</h1>'+
                         '<label id="horariollegada">' + vuelo.horariollegada + '</label>'+
                         '</div>'+  
                     '<div class="pruebaflex2">'+
                         '<label>Precio</label>' +
-                        '<label id="precio">' + vuelo.precio + '</label>' +
+                        '<label>' + vuelo.precio + '</label>' +
                     '</div>';
                 vuelosvuelta.appendChild(fila);
                 document.getElementById('origenvuelta').innerHTML = vuelo.origen; 
@@ -398,24 +361,14 @@
                 });
 
 
-                    // Mostramos el formulario de modificación y ocultamos el formulario de consulta
-                   
-                    
-                    
                 })
                 .catch(function (error) {
                     // Código para manejar errores
                     alert('Error al obtener los datos del vuelo ahora.');
                 });
-
-
-
-
-
-
-
-
         });
+
+
 
         // Capturamos el evento de envío del formulario de modificación
         document.getElementById('formularioModificar').addEventListener('submit', function (event) {
@@ -461,6 +414,20 @@
                     alert('Error al guardar los cambios del producto.');
                 })
         });
+
+//agregar vuelos a la reserva de vuelos
+
+        function obtenerValor(event) {
+  var div = event.target;
+  var valor = div.getAttribute("value");
+  console.log(valor);
+
+    document.getElementById(valor).style.backgroundColor = "rgb(196, 192, 196)";
+
+
+
+}
+
     </script>
 </div>
 
