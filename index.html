@@ -274,7 +274,7 @@
 
                 var fila = document.createElement('div');
                 console.log(fila)
-                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="obtenerValor(event)">'+
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloIda(event)">'+
                   '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
                         '<label>' + vuelo.numerovuelo + '</label>'+
@@ -334,7 +334,7 @@
 
                 var fila = document.createElement('div');
                 console.log(fila)
-                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="obtenerValor(event)">'+
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloVuelta(event)">'+
                     '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
                         '<label>' + vuelo.numerovuelo + '</label>'+
@@ -417,16 +417,27 @@
 
 //agregar vuelos a la reserva de vuelos
 
-        function obtenerValor(event) {
+        function reservaVueloIda(event) {
   var div = event.target;
-  var valor = div.getAttribute("value");
-  console.log(valor);
-
-    document.getElementById(valor).style.backgroundColor = "rgb(196, 192, 196)";
+  var valorida = div.getAttribute("value");
+  console.log(valorida);
 
 
+    document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
 
 }
+
+
+function reservaVueloVuelta(event) {
+  var div = event.target;
+  var valorvuelta = div.getAttribute("value");
+  console.log(valorvuelta);
+
+    document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
+
+}
+
+
 
     </script>
 </div>
