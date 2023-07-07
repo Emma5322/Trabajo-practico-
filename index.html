@@ -375,23 +375,29 @@
 
 
         // Capturamos el evento de envío del formulario de modificación
-        document.getElementById('formularioModificar').addEventListener('submit', function (event) {
+        document.getElementById('botonreserva').addEventListener('click', function (event) {
             event.preventDefault(); // Evitamos que se recargue la página
 
             // Obtenemos los valores del formulario de modificación
-            var codigo = document.getElementById('codigo').value;
-            var descripcion = document.getElementById('descripcionModificar').value;
-            var cantidad = document.getElementById('cantidadModificar').value;
-            var precio = document.getElementById('precioModificar').value;
+            //var codigo = document.getElementById('codigo').value; 
+            
+            var adultos = document.getElementById('adultos').value;
+            var niños = document.getElementById('niños').value;
+            var bebes = document.getElementById('bebes').value;
+
+            var asientos = parseInt(adultos) + parseInt(niños) + parseInt(bebes);
+
+            console.log(asientos);
 
             // Creamos un objeto con los datos del producto actualizados
-            var producto = {
-                codigo: codigo,
-                descripcion: descripcion,
-                cantidad: cantidad,
-                precio: precio
+            var reserva = {
+                //codigo: codigo,
+                valorida: valorida,
+                valorvuelta: valorvuelta,
+                asientos: asientos,
+               
             };
-
+            console.log(reserva);
             // Realizamos la solicitud PUT al servidor para guardar los cambios
             fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',
@@ -429,8 +435,6 @@ var valorida = null;
 
    document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
 
-
-
 }
 
 var valorvuelta = null;
@@ -440,9 +444,6 @@ function reservaVueloVuelta(event) {
  console.log(valorvuelta);
 
 document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
-
-
-
 
 }
 
@@ -469,15 +470,7 @@ function reservarvuelo(){
         return false; 
     }
 
-
-
 }
-
-
-
-
-
-
 
     </script>
 </div>
