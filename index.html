@@ -416,31 +416,69 @@
         });
 
 //agregar vuelos a la reserva de vuelos
-
+var valorida = null;
         function reservaVueloIda(event) {
   var div = event.target;
-  var valorida = div.getAttribute("value");
+  valorida = div.getAttribute("value");
   console.log(valorida);
 
 
-    document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
+   document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
+
+
 
 }
 
-
+var valorvuelta = null;
 function reservaVueloVuelta(event) {
   var div = event.target;
-  var valorvuelta = div.getAttribute("value");
-  console.log(valorvuelta);
+  valorvuelta = div.getAttribute("value");
+ console.log(valorvuelta);
 
-    document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
+document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
+
+
+
 
 }
+
+
+function reservarvuelo(){
+
+
+    console.log (valorida);
+    console.log (valorvuelta);
+
+    if (valorvuelta == null && valorida == null ) {
+        alert("Por favor, seleccionar los vuelos");
+        return false; 
+    }
+
+
+    if (valorida == null) {
+        alert("Por favor, seleccionar el vuelo de ida.");
+        return false; 
+    }
+
+    if (valorvuelta == null ) {
+        alert("Por favor, seleccionar el vuelo de vuelta");
+        return false; 
+    }
+
+
+
+}
+
+
+
+
 
 
 
     </script>
 </div>
+ 
+<button onclick="reservarvuelo()">reservar</button>
 
 </body>
 
