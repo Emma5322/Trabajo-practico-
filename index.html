@@ -19,7 +19,7 @@
 
         <div id="botonreserva" class="der" style="display: none;" >
             <h1>Detalles de la reserva</h1>
-            <button onclick="reservarvuelo()">reservar</button>
+            <button onclick="reservarvuelo()" ">reservar</button>
         </div>
 
         <div class="contenido">
@@ -399,12 +399,12 @@
             };
             console.log(reserva);
             // Realizamos la solicitud PUT al servidor para guardar los cambios
-            fetch(URL + 'vuelos/' + valorida + '/' + valorvuelta, {
+            fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(reserva)
+                body: JSON.stringify(producto)
             })
                 .then(function (response) {
                     if (response.ok) {
@@ -449,6 +449,7 @@ document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)
 
 
 function reservarvuelo(){
+
 
     console.log (valorida);
     console.log (valorvuelta);
