@@ -224,7 +224,15 @@ footer {
 }
 
 
+.barrasuperiorvuelo {
 
+    position: sticky;
+    top: 0;
+    }
+
+    .opcion-seleccionada {
+        background-color: yellow;
+      }
 
 .barrasuperiorvuelo div {
     display: flex;
@@ -235,12 +243,12 @@ footer {
     padding: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
+    position: sticky;
+    top: 0;
+    }
 
-    
-}
-
-.pruebaflex>div:hover {
-    background-color: grey;
+.pruebaflex:hover {
+    background-color: rgb(196, 192, 196);
 }
 
 
