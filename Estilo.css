@@ -195,7 +195,7 @@ footer {
     display: flex;
     justify-content: space-evenly;
     padding-bottom: 10px;
-    border-bottom: dashed;
+    border-top: dashed;
 
 }
 
