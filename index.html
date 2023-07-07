@@ -12,11 +12,15 @@
 
 <body>
     <div class="conteiner">
+        
         <script type="text/javascript" src="header.js"></script>
        
         <div class="izq"></div>
 
-        <div class="der"></div>
+        <div id="botonreserva" class="der" style="display: none;" >
+            <h1>Detalles de la reserva</h1>
+            <button onclick="reservarvuelo()" ">reservar</button>
+        </div>
 
         <div class="contenido">
 
@@ -306,7 +310,7 @@
                     document.getElementById('formulariovuelo').style.display = 'none';
                     document.getElementById('formulariobusqueda').style.display = 'none';
                     document.getElementById('itinerariovuelo').style.display = 'block';
-                    
+                    document.getElementById('botonreserva').style.display = 'block';
                     
                 })
                 .catch(function (error) {
@@ -477,8 +481,7 @@ function reservarvuelo(){
 
     </script>
 </div>
- 
-<button onclick="reservarvuelo()">reservar</button>
+
 
 </body>
 
