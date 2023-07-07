@@ -399,12 +399,12 @@
             };
             console.log(reserva);
             // Realizamos la solicitud PUT al servidor para guardar los cambios
-            fetch(URL + 'productos/' + codigo, {
+            fetch(URL + 'vuelos/' + valorida + '/' + valorvuelta, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(producto)
+                body: JSON.stringify(reserva)
             })
                 .then(function (response) {
                     if (response.ok) {
@@ -449,7 +449,6 @@ document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)
 
 
 function reservarvuelo(){
-
 
     console.log (valorida);
     console.log (valorvuelta);
