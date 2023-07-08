@@ -78,6 +78,12 @@ class Vuelo:
         self.horariollegada = nueva_horariollegada
         self.precio = nueva_precio
 
+
+    def modificar_asientos(self, nueva_asientoslibres):
+        self.asientoslibres = nueva_asientoslibres
+
+
+
 # -------------------------------------------------------------------
 # Definimos la clase "Inventario"
 # -------------------------------------------------------------------
@@ -91,38 +97,33 @@ class Inventario:
         if vuelo_existente:
             return jsonify({'message': 'Ya existe un vuelo con ese código.'}), 400
 
-        nuevo_vuelo = Vuelo(codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio)
-        self.cursor.execute("INSERT INTO vuelos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio))
-        self.conexion.commit()
-        return jsonify({'message': 'Vuelo agregado correctamente.'}), 200
+    #    nuevo_vuelo = Vuelo(codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio)
+    #    self.cursor.execute("INSERT INTO vuelos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio))
+     #   self.conexion.commit()
+      #  return jsonify({'message': 'Vuelo agregado correctamente.'}), 200
 
-    def consultar_vuelo(self, codigoorigen):
-        self.cursor.execute("SELECT * FROM vuelos WHERE codigoorigen= ?", (codigoorigen,))
+    def consultar_vuelo(self, codigo):
+        self.cursor.execute("SELECT * FROM vuelos WHERE codigo = ?", (codigo,))
         row = self.cursor.fetchone()
         if row:
             codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio = row
             return Vuelo(codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio)
-        return None
+        return False
 
-    def modificar_vuelo(self, codigo, nueva_descripcion, nueva_numerovuelo, nueva_asientoslibres, nueva_asientostotales, nueva_asientosocupados, nueva_origen, nueva_destino,  nueva_horariosalida, nueva_horariollegada, nueva_precio):
+
+
+    def modificar_vuelo(self, codigo, nueva_asientoslibres):
         vuelo = self.consultar_vuelo(codigo)
         if vuelo:
-            vuelo.modificar(nueva_descripcion, nueva_numerovuelo, nueva_asientoslibres, nueva_asientostotales, nueva_asientosocupados, nueva_origen, nueva_destino,  nueva_horariosalida, nueva_horariollegada, nueva_precio)
-            self.cursor.execute("UPDATE vuelos SET descripcion = ?, numerovuelo = ?, asientoslibres = ?, asientostotales = ?, asientosocupados = ?, origen = ?, destino = ?, horariosalida = ?, horariollegada = ?, precio= ? WHERE codigo = ?",
-                                (nueva_descripcion, nueva_numerovuelo, nueva_asientoslibres, nueva_asientostotales, nueva_asientosocupados, nueva_origen, nueva_destino,  nueva_horariosalida, nueva_horariollegada, nueva_precio, codigo))
+            vuelo.modificar_asientos(nueva_asientoslibres)
+            asientosreserva = vuelo.asientoslibres - nueva_asientoslibres
+            self.cursor.execute("UPDATE vuelos SET asientoslibres = ? WHERE codigo = ?",
+                                (asientosreserva, codigo))
             self.conexion.commit()
-            return jsonify({'message': 'Vuelo modificado correctamente.'}), 200
-        return jsonify({'message': 'Vuelo no encontrado.'}), 404
+            return jsonify({'message': 'Reserva realizada correctamente.'}), 200
+        return jsonify({'message': 'Reserva no realizada.'}), 404
 
-    def listar_vuelos(self):
-        self.cursor.execute("SELECT * FROM vuelos")
-        rows = self.cursor.fetchall()
-        vuelos = []
-        for row in rows:
-            codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio = row
-            vuelo = {'codigo': codigo, 'descripcion': descripcion, 'numerovuelo': numerovuelo, 'asientoslibres':asientoslibres, 'asientostotales': asientostotales, 'asientosocupados': asientosocupados, 'codigoorigen': codigoorigen, 'origen': origen, 'codigodestino': codigodestino, 'destino': destino, 'horariosalida': horariosalida, 'horariollegada': horariollegada, 'precio': precio}
-            vuelos.append(vuelo)
-        return jsonify(vuelos), 200
+
 
 
     def listar_vuelos_ida(self, codigoorigen, codigodestino):
@@ -146,6 +147,15 @@ class Inventario:
         return jsonify(vuelos), 200
 
 
+    def listar_vuelos(self):
+        self.cursor.execute("SELECT * FROM vuelos")
+        rows = self.cursor.fetchall()
+        vuelos = []
+        for row in rows:
+            codigo, descripcion, numerovuelo, asientoslibres, asientostotales, asientosocupados, codigoorigen, origen, codigodestino, destino,  horariosalida, horariollegada, precio = row
+            vuelo = {'codigo': codigo, 'descripcion': descripcion, 'numerovuelo': numerovuelo, 'asientoslibres':asientoslibres, 'asientostotales': asientostotales, 'asientosocupados': asientosocupados, 'codigoorigen': codigoorigen, 'origen': origen, 'codigodestino': codigodestino, 'destino': destino, 'horariosalida': horariosalida, 'horariollegada': horariollegada, 'precio': precio}
+            vuelos.append(vuelo)
+        return jsonify(vuelos), 200
 
 
     def eliminar_vuelo(self, codigo):
@@ -178,30 +188,22 @@ CORS(app)
 inventario = Inventario()   # Instanciamos un inventario
 #inventario.agregar_vuelo("LA515", "Vuelo a Catamarca", "B-747", 15, 60, 45, "CNQ", "Corrientes", "CTC", "Catamarca", "17:05", "19:15", "$7800")
 
+@app.route('/vuelos/<valorida>/<valorvuelta>', methods=['PUT'])
+def modificar_vuelo_ida(valorida, valorvuelta):
+    codigo = request.json.get('valorida')
+    nueva_asientoslibres = request.json.get('asientos')
+    return inventario.modificar_vuelo(codigo, nueva_asientoslibres)
+
+
+
 @app.route('/vuelos/<codigoorigen>/<codigodestino>', methods=['GET'])
 def obtener_vuelo_ida(codigoorigen, codigodestino):
     return inventario.listar_vuelos_ida(codigoorigen, codigodestino)
-   # vuelo = inventario.listar_vuelos_ida(codigoorigen, codigodestino)
-   # if vuelo:
-       # return jsonify({
-      #      'codigo': vuelo.codigo,
-     #       'horariosalida': vuelo.horariosalida,
-     #       'horariollegada': vuelo.horariollegada,
-     #       'codigoorigen': vuelo.codigoorigen,
-     #       'origen': vuelo.origen,
-     #       'codigodestino': vuelo.codigodestino,
-     #       'destino': vuelo.destino,
-     #       'precio': vuelo.precio,
-     #       'asientoslibres': vuelo.asientoslibres,
-     #       'numerovuelo': vuelo.numerovuelo
-     #   }), 200
-   # return jsonify({'message': 'Producto no encontrado.'}), 404
+
 
 @app.route('/vuelos/<codigodestino>/<codigoorigen>', methods=['GET'])
 def obtener_vuelo_vuelta(codigodestino, codigoorigen):
     return inventario.listar_vuelos_vuelta(codigodestino, codigoorigen)
-
-
 
 
 @app.route('/vuelos', methods=['GET'])
@@ -210,7 +212,7 @@ def obtener_vuelos():
 
 @app.route('/')
 def index():
-    return ("<h1>API de vuelos a laquiaca<h1>")
+    return ("<h1>API de reserva de vuelos 1<h1>")
 
 if __name__ == '__main__':
     app.run()
