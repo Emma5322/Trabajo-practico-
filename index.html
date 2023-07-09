@@ -303,6 +303,7 @@
                 vuelosida.appendChild(fila);
                 document.getElementById('origenida').innerHTML = vuelo.origen; 
                 document.getElementById('destinoida').innerHTML = vuelo.destino; 
+                var asientoslibresida = vuelo.asientoslibres
                 });
 
 
@@ -362,6 +363,7 @@
                 vuelosvuelta.appendChild(fila);
                 document.getElementById('origenvuelta').innerHTML = vuelo.origen; 
                 document.getElementById('destinovuelta').innerHTML = vuelo.destino; 
+                var asientoslibresvuelta = vuelo.asientoslibres
                 });
 
 
@@ -385,7 +387,9 @@
             var niños = document.getElementById('niños').value;
             var bebes = document.getElementById('bebes').value;
 
+
             var asientos = parseInt(adultos) + parseInt(niños) + parseInt(bebes);
+
 
             console.log(asientos);
 
@@ -399,12 +403,12 @@
             };
             console.log(reserva);
             // Realizamos la solicitud PUT al servidor para guardar los cambios
-            fetch(URL + 'productos/' + codigo, {
+            fetch(URL + 'vuelos/' + valorida + '/' + valorvuelta, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(producto)
+                body: JSON.stringify(reserva)
             })
                 .then(function (response) {
                     if (response.ok) {
