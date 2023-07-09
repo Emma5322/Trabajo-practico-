@@ -112,17 +112,34 @@ class Inventario:
 
 
 
+   # def modificar_vuelo(self, codigo, asientosreserva):
+    #    vuelo = self.consultar_vuelo(codigo)
+    #    nueva_asientoslibres = vuelo.asientoslibres - asientosreserva
+    #    if vuelo:
+    #        vuelo.modificar_asientos(nueva_asientoslibres)
+    #        self.cursor.execute("UPDATE vuelos SET asientoslibres = ? WHERE codigo = ?",
+    #                            (nueva_asientoslibres, codigo))
+    #        self.conexion.commit()
+    #        return jsonify({'message': 'Reserva realizada correctamente.'}), 200
+    #    return jsonify({'message': 'Reserva no realizada.'}), 404
+
+
     def modificar_vuelo(self, codigo, asientosreserva):
         vuelo = self.consultar_vuelo(codigo)
         nueva_asientoslibres = vuelo.asientoslibres - asientosreserva
-        if vuelo:
-            vuelo.modificar_asientos(nueva_asientoslibres)
-            self.cursor.execute("UPDATE vuelos SET asientoslibres = ? WHERE codigo = ?",
-                                (nueva_asientoslibres, codigo))
-            self.conexion.commit()
-            return jsonify({'message': 'Reserva realizada correctamente.'}), 200
-        return jsonify({'message': 'Reserva no realizada.'}), 404
-
+        if vuelo.asientoslibres < asientosreserva:
+            return jsonify({'message': 'No se puede realizar la reserva'}), 404
+        elif vuelo.asientoslibres > asientosreserva:
+            if vuelo:
+                vuelo.modificar_asientos(nueva_asientoslibres)
+                self.cursor.execute("UPDATE vuelos SET asientoslibres = ? WHERE codigo = ?",
+                                    (nueva_asientoslibres, codigo))
+                self.conexion.commit()
+                return jsonify({'message': 'Reserva realizada correctamente.'}), 200
+            return jsonify({'message': 'Reserva no realizada.'}), 404
+        else:
+            inventario.eliminar_vuelo(codigo)
+            return jsonify({'message': 'Vuelo eliminado.'}), 404
 
 
 
@@ -220,4 +237,3 @@ def index():
 
 if __name__ == '__main__':
     app.run()
-
