@@ -112,13 +112,13 @@ class Inventario:
 
 
 
-    def modificar_vuelo(self, codigo, nueva_asientoslibres):
+    def modificar_vuelo(self, codigo, asientosreserva):
         vuelo = self.consultar_vuelo(codigo)
+        nueva_asientoslibres = vuelo.asientoslibres - asientosreserva
         if vuelo:
             vuelo.modificar_asientos(nueva_asientoslibres)
-            asientosreserva = vuelo.asientoslibres - nueva_asientoslibres
             self.cursor.execute("UPDATE vuelos SET asientoslibres = ? WHERE codigo = ?",
-                                (asientosreserva, codigo))
+                                (nueva_asientoslibres, codigo))
             self.conexion.commit()
             return jsonify({'message': 'Reserva realizada correctamente.'}), 200
         return jsonify({'message': 'Reserva no realizada.'}), 404
@@ -190,9 +190,13 @@ inventario = Inventario()   # Instanciamos un inventario
 
 @app.route('/vuelos/<valorida>/<valorvuelta>', methods=['PUT'])
 def modificar_vuelo_ida(valorida, valorvuelta):
-    codigo = request.json.get('valorida')
-    nueva_asientoslibres = request.json.get('asientos')
-    return inventario.modificar_vuelo(codigo, nueva_asientoslibres)
+    valorida = request.json.get('valorida')
+    valorvuelta = request.json.get('valorvuelta')
+    asientosreserva = request.json.get('asientos')
+    codigos = [valorida, valorvuelta]
+    for codigo in codigos:
+        inventario.modificar_vuelo(codigo, asientosreserva)
+    return jsonify({'message': 'Vuelo no encontrado.'}), 200
 
 
 
