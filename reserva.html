@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="Images/Viajes auricular.png">
+    <link rel="stylesheet" href="Estilo.css">
+
+</head>
+
+<body>
+
+    <div class="conteiner">
+        <script type="text/javascript" src="header.js"></script>
+
+
+        <div class="izq"></div>
+        <div class="der"></div>
+        <div class="contenido">
+            
+            <div id="itinerariovuelo">
+                    <div class="vuelos">
+                        <div class="barrasuperiorvuelo">
+                            
+                            <div>
+                                <h1>Mis reservas</h1>
+                            </div>
+                        </div >
+                        <div id="vuelosreservados">
+        
+                        </div>
+        
+                        
+                    </div>
+           
+        </div>
+        </div>
+        <div class="ofertas"></div>
+        <footer>
+            <script type="text/javascript" src="footer.js"></script>
+        </footer>
+
+        <script type="text/javascript" src="validacioniniciarsesion.js"></script>
+
+
+        <script>
+        //const URL = "http://127.0.0.1:5000/"
+        const URL = "https://emmanuel5322.pythonanywhere.com/";
+        
+
+        // Capturamos el evento de envío del formulario para mostrar el itinerario de los vuelos de ida
+        document.getElementById('mireserva').addEventListener('click', function (event) {
+            event.preventDefault(); // Evitamos que se recargue la página
+
+
+
+            
+
+            
+
+            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de ida
+            fetch(URL + 'reserva')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al obtener la busqueda vuelo');
+                    }
+                })
+                .then(function (data) {
+                    var vuelosreservados = document.getElementById('vuelosreservados');
+
+
+                    data.forEach(function (vuelo) {
+
+                var fila = document.createElement('div');
+                console.log(fila)
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloIda(event)">'+
+                  '<div class="pruebaflex2">'+
+                        '<label>'  + vuelo.codigo + '</label>'+
+                        '<label>' + vuelo.numerovuelo + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigoorigen + '</h1>'+
+                        '<label>' + vuelo.horariosalida + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<img src="Images/avion.png" height="40px">'+
+                        '<label>Asientos reservados: ' + vuelo.asientoslibres + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigodestino + '</h1>'+
+                        '<label>' + vuelo.horariollegada + '</label>'+
+                        '</div>'+  
+                    '<div class="pruebaflex2">'+
+                        '<label>Precio</label>' +
+                        '<label>' + vuelo.precio + '</label>' 
+                    '</div>'+
+                    '</div>';
+                vuelosreservados.appendChild(fila);
+
+                });
+
+
+                    // Mostramos el formulario de modificación y ocultamos el formulario de consulta
+
+                    
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al obtener los datos del vuelo ahora.');
+                });
+            });
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

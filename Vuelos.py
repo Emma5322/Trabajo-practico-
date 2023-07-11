@@ -186,12 +186,38 @@ class Inventario:
 # Definimos la clase "Reserva vuelo"
 # -------------------------------------------------------------------
 
+class Reserva:
+    def __init__(self):
+        self.conexion = get_db_connection()
+        self.cursor = self.conexion.cursor()
+        self.items = []
+
+    def agregar(self, codigo, asientosreserva, inventario):
+        vuelo = inventario.consultar_vuelo(codigo)
+        if vuelo is None:
+            return jsonify({'message': 'El vuelo no existe.'}), 404
+        if vuelo.asientoslibres < asientosreserva:
+            return jsonify({'message': 'No se puede realizar la reserva.'}), 400
+
+        for item in self.items:
+            if item.codigo == codigo:
+                item.asientoslibres += asientosreserva
+                self.cursor.execute("UPDATE vuelos SET asientoslibres = asientoslibres - ? WHERE codigo = ?",
+                                    (asientosreserva, codigo))
+                self.conexion.commit()
+                return jsonify({'message': 'Reserva agregada correctamente.'}), 200
+
+        nuevo_item = Vuelo(codigo, vuelo.descripcion, vuelo.numerovuelo, asientosreserva, vuelo.asientostotales, vuelo.asientosocupados, vuelo.codigoorigen, vuelo.origen, vuelo.codigodestino, vuelo.destino,  vuelo.horariosalida, vuelo.horariollegada, vuelo.precio)
+        self.items.append(nuevo_item)
+        return jsonify({'message': 'Producto agregado al carrito correctamente.'}), 200
 
 
-
-
-
-
+    def mostrar(self):
+        vuelos_reserva = []
+        for item in self.items:
+            reserva = {'codigo': item.codigo, 'descripcion': item.descripcion, 'numerovuelo': item.numerovuelo, 'asientoslibres': item.asientoslibres, 'asientostotales': item.asientostotales, 'asientosocupados': item.asientosocupados, 'codigoorigen': item.codigoorigen, 'origen': item.origen, 'codigodestino': item.codigodestino, 'destino': item.destino, 'horariosalida': item.horariosalida, 'horariollegada': item.horariollegada, 'precio': item.precio}
+            vuelos_reserva.append(reserva)
+        return jsonify(vuelos_reserva), 200
 
 
 # -------------------------------------------------------------------
@@ -201,9 +227,13 @@ class Inventario:
 app = Flask(__name__)
 CORS(app)
 
-#carrito = Carrito()         # Instanciamos un carrito
+reserva = Reserva()         # Instanciamos una reserva
 inventario = Inventario()   # Instanciamos un inventario
 #inventario.agregar_vuelo("LA515", "Vuelo a Catamarca", "B-747", 15, 60, 45, "CNQ", "Corrientes", "CTC", "Catamarca", "17:05", "19:15", "$7800")
+
+
+
+
 
 @app.route('/vuelos/<valorida>/<valorvuelta>', methods=['PUT'])
 def modificar_vuelo_ida(valorida, valorvuelta):
@@ -212,10 +242,12 @@ def modificar_vuelo_ida(valorida, valorvuelta):
     asientosreserva = request.json.get('asientos')
     codigos = [valorida, valorvuelta]
     for codigo in codigos:
-        inventario.modificar_vuelo(codigo, asientosreserva)
+        reserva.agregar(codigo, asientosreserva, inventario)
     return jsonify({'message': 'Vuelo no encontrado.'}), 200
 
-
+@app.route('/reserva', methods=['GET'])
+def obtener_reserva():
+    return reserva.mostrar()
 
 @app.route('/vuelos/<codigoorigen>/<codigodestino>', methods=['GET'])
 def obtener_vuelo_ida(codigoorigen, codigodestino):

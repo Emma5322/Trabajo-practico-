@@ -21,6 +21,6 @@ document.write("<div class='buscaTuVuelo'><a href='index.html'>Busca tu vuelo</a
 document.write("<div class='promociones'><a href='promociones.html'>Promociones</a></div>");
 document.write("<div class='clubAuri'><a href='clubauri.html'>Club Auri</a></div>");
 document.write("<div class='actividades'><a href='actividades.html'>Actividades</a></div>");
-document.write("<div class='actividades'><a href='Reserva.html'>Mi reserva</a></div>");
+document.write("<div class='actividades' id='mireserva'><a href='reserva.html'>Mi reserva</a></div>");
 document.write("</div>");
 document.close();
