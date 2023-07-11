@@ -18,8 +18,15 @@
         <div class="izq"></div>
 
         <div id="botonreserva" class="der" style="display: none;" >
-            <h1>Detalles de la reserva</h1>
+            <h2>Detalles de la reserva</h2>
+            <div id="detalleida">
+            </div>
+            <div id="detallevuelta">
+            </div>
+
+
             <button onclick="reservarvuelo()" ">reservar</button>
+
         </div>
 
         <div class="contenido">
@@ -234,7 +241,7 @@
             var soloida = document.getElementById('soloida').value;
             var multipledestino = document.getElementById('multipledestino').value;
             var codigo = document.getElementById('clase').value;
-            var inputida = document.getElementById('inputida').value;
+            
             var inputvuelta = document.getElementById('inputvuelta').value;
             var origen2 = document.getElementById('origen2').value;
             var destino2 = document.getElementById('destino2').value;
@@ -247,7 +254,7 @@
             console.log(idayvuelta)
             console.log(soloida)
             console.log(multipledestino)
-            console.log(inputida)
+            console.log(inputida);
             console.log(inputvuelta)
             console.log(origen2)
             console.log(destino2)
@@ -338,7 +345,6 @@
 
 
                 var fila = document.createElement('div');
-                console.log(fila)
                 fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloVuelta(event)">'+
                     '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
@@ -364,6 +370,8 @@
                 document.getElementById('origenvuelta').innerHTML = vuelo.origen; 
                 document.getElementById('destinovuelta').innerHTML = vuelo.destino; 
                 var asientoslibresvuelta = vuelo.asientoslibres
+
+
                 });
 
 
@@ -433,19 +441,77 @@
 var valorida = null;
         function reservaVueloIda(event) {
   var div = event.target;
+  console.log(div);
   valorida = div.getAttribute("value");
-  console.log(valorida);
+ 
+  var codigoida1 = div.getElementsByTagName("h1")[0].innerHTML;
+  var codigoida2 = div.getElementsByTagName("h1")[1].innerHTML;
+  var precioida = div.getElementsByTagName("label")[6].innerHTML;
+  var inputida = document.getElementById('inputida').value;
+
+  var detalleida = document.getElementById("detalleida");
+
+  detalleida.innerHTML = '<div>'+
+                '<label>IDA</label>'+
+                '<label>' + inputida + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>' + codigoida1 + '</label>'+
+                '<label>---></label>'+
+                '<label>' + codigoida2 + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>Precio</label>'+ 
+                '<label>' + precioida + '</label>'+
+                '</div>';
+
+
+
+
 
 
    document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
 
+
 }
+
+
+
+
 
 var valorvuelta = null;
 function reservaVueloVuelta(event) {
   var div = event.target;
   valorvuelta = div.getAttribute("value");
  console.log(valorvuelta);
+
+ var codigovuelta1 = div.getElementsByTagName("h1")[0].innerHTML;
+  var codigovuelta2 = div.getElementsByTagName("h1")[1].innerHTML;
+  var precioida = div.getElementsByTagName("label")[6].innerHTML;
+  var inputvuelta = document.getElementById('inputvuelta').value;
+
+  var detalleida = document.getElementById("detallevuelta");
+
+  detalleida.innerHTML = '<div>'+
+                '<label>IDA</label>'+
+                '<label>' + inputvuelta + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>' + codigovuelta1 + '</label>'+
+                '<label>---></label>'+
+                '<label>' + codigovuelta2 + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>Precio</label>'+ 
+                '<label>' + precioida + '</label>'+
+                '</div>';
+
+
+
+
+
+
+
 
 document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
 
@@ -458,7 +524,9 @@ function reservarvuelo(){
     console.log (valorida);
     console.log (valorvuelta);
 
-    if (valorvuelta == null && valorida == null ) {
+
+
+        if (valorvuelta == null && valorida == null ) {
         alert("Por favor, seleccionar los vuelos");
         return false; 
     }

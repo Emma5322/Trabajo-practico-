@@ -16,7 +16,7 @@ body {
 .conteiner {
     display: grid;
 
-    grid-template: 100px 80px auto auto auto/ 10% auto auto auto 10%;
+    grid-template: 100px 80px auto auto auto/ 15% auto auto auto 15%;
 
     /* Distribuimos el contenido en cada fila */
     grid-template-areas: "header header header header header"
@@ -223,6 +223,39 @@ footer {
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
+#detalleida {
+display: flex;
+flex-direction: column;
+background-color: rgb(242, 242, 242);
+border: solid 1px;
+  
+}
+
+#detalleida div{
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 1px;
+  
+
+    }
+
+    #detallevuelta {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(242, 242, 242);
+        border: solid 1px;
+        margin-top: 10px;
+          
+        }
+        
+        #detallevuelta div{
+            display: flex;
+            justify-content: space-evenly;
+            border: solid 1px;
+          
+        
+            }
+    
 
 .barrasuperiorvuelo {
 
