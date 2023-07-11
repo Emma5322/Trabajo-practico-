@@ -166,22 +166,15 @@ document.getElementById('cancelarReserva').addEventListener('click', function (e
                 };
             console.log(cancelarreserva);
             // Realizamos la solicitud PUT al servidor para guardar los cambios
-            fetch(URL + 'reserva', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(cancelarreserva)
+            fetch(URL + 'reservas/' + vuelocancelar + '/' + asientosliberados, 
+            {
+                method: 'DELETE'
+                //headers: {
+                    //'Content-Type': 'application/json'
+                //},
+                //body: JSON.stringify(cancelarreserva)
             })
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json(); // Parseamos la respuesta JSON
-                    } else {
-                        // Si hubo un error, lanzar explícitamente una excepción
-                        // para ser "catcheada" más adelante
-                        throw new Error('Error al guardar los cambios del producto.');
-                    }
-                })
+                
                 .then(function (data) {
                     alert('Cambios guardados correctamente.');
                     location.reload(); // Recargamos la página para volver al formulario de consulta

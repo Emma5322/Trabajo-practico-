@@ -212,20 +212,16 @@ class Reserva:
         return jsonify({'message': 'Producto agregado al carrito correctamente.'}), 200
 
 
-
-        def quitar(self, codigo, asientosliberados, inventario):
-            for item in self.items:
-                if item.codigo == codigo:
-                    item.asientoslibres -= asientosliberados
-                    if item.asintosliberados == 0:
-                        self.items.remove(item)
-                    self.cursor.execute("UPDATE vuelos SET asientoslibres = asientoslibres + ? WHERE codigo = ?",
+    def quitar(self, codigo, asientosliberados, inventario):
+        for item in self.items:
+            if item.codigo == codigo:
+                #item.asientoslibres -= asientosliberados
+                self.items.remove(item)
+                self.cursor.execute("UPDATE vuelos SET asientoslibres = asientoslibres + ? WHERE codigo = ?",
                                     (asientosliberados, codigo))
-                    self.conexion.commit()
-                    return jsonify({'message': 'Producto quitado del carrito correctamente.'}), 200
-
-        return jsonify({'message': 'El producto no se encuentra en el carrito.'}), 404
-
+                self.conexion.commit()
+            return jsonify({'message': 'Producto quitado del carrito correctamente.'}), 200
+        #return jsonify({'message': 'El producto no se encuentra en el carrito.'}), 404
 
     def mostrar(self):
         vuelos_reserva = []
@@ -246,14 +242,16 @@ reserva = Reserva()         # Instanciamos una reserva
 inventario = Inventario()   # Instanciamos un inventario
 #inventario.agregar_vuelo("LA515", "Vuelo a Catamarca", "B-747", 15, 60, 45, "CNQ", "Corrientes", "CTC", "Catamarca", "17:05", "19:15", "$7800")
 
-@app.route('/reserva', methods=['DELETE'])
-def quitar_reserva():
-    codigo = request.json.get('codigo')
-    asientosliberados = request.json.get('asientoslibres')
+@app.route('/reservas/<vuelocancelar>/<asientosliberados>', methods=['DELETE'])
+def quitar_reserva(vuelocancelar, asientosliberados):
+    codigo = vuelocancelar
+    #asientosliberados = request.json.get('asientoslibre')
     inventario = Inventario()
     return reserva.quitar(codigo, asientosliberados, inventario)
 
-
+@app.route('/reserva', methods=['GET'])
+def obtener_reserva():
+    return reserva.mostrar()
 
 @app.route('/vuelos/<valorida>/<valorvuelta>', methods=['PUT'])
 def modificar_vuelo_ida(valorida, valorvuelta):
@@ -265,9 +263,7 @@ def modificar_vuelo_ida(valorida, valorvuelta):
         reserva.agregar(codigo, asientosreserva, inventario)
     return jsonify({'message': 'Vuelo no encontrado.'}), 200
 
-@app.route('/reserva', methods=['GET'])
-def obtener_reserva():
-    return reserva.mostrar()
+
 
 @app.route('/vuelos/<codigoorigen>/<codigodestino>', methods=['GET'])
 def obtener_vuelo_ida(codigoorigen, codigodestino):
