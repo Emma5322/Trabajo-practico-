@@ -18,7 +18,13 @@
 
 
         <div class="izq"></div>
-        <div class="der"></div>
+        <div id="botonreserva" class="der">
+
+
+
+            <button id="cancelarReserva">Cancelar reserva</button>
+
+        </div>
         <div class="contenido">
             
             <div id="itinerariovuelo">
@@ -26,7 +32,7 @@
                         <div class="barrasuperiorvuelo">
                             
                             <div>
-                                <h1>Mis reservas</h1>
+                                <h1>Vuelos reservados</h1>
                             </div>
                         </div >
                         <div id="vuelosreservados">
@@ -80,7 +86,7 @@
 
                 var fila = document.createElement('div');
                 console.log(fila)
-                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloIda(event)">'+
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '"onclick="selectorvuelo(event)">'+
                   '<div class="pruebaflex2">'+
                         '<label>'  + vuelo.codigo + '</label>'+
                         '<label>' + vuelo.numerovuelo + '</label>'+
@@ -91,7 +97,7 @@
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<img src="Images/avion.png" height="40px">'+
-                        '<label>Asientos reservados: ' + vuelo.asientoslibres + '</label>'+
+                        '<label>Asientos reservados: <label>' + vuelo.asientoslibres + '</label></label>'+
                     '</div>'+
                     '<div class="pruebaflex2">'+
                         '<h1>' + vuelo.codigodestino + '</h1>'+
@@ -116,6 +122,85 @@
                     alert('Error al obtener los datos del vuelo ahora.');
                 });
             });
+
+
+            var asientosliberados = null;
+
+            var vuelocancelar = null;
+        function selectorvuelo(event) {
+  var div = event.target;
+  console.log(div);
+  vuelocancelar = div.getAttribute("value");
+ 
+  
+  asientosliberados = div.getElementsByTagName("label")[4].innerHTML;
+console.log(asientosliberados)
+
+
+
+   document.getElementById(vuelocancelar).style.backgroundColor = "rgb(196, 192, 196)";
+
+}
+
+
+
+
+
+
+document.getElementById('cancelarReserva').addEventListener('click', function (event) {
+            event.preventDefault(); // Evitamos que se recargue la página
+
+            // Obtenemos los valores del formulario de modificación
+            //var codigo = document.getElementById('codigo').value; 
+            
+
+
+            console.log(vuelocancelar);
+
+
+            // Creamos un objeto con los datos del producto actualizados
+            var cancelarreserva = {
+                //codigo: codigo,
+                codigo: vuelocancelar,
+                asientoslibre: asientosliberados,
+                };
+            console.log(cancelarreserva);
+            // Realizamos la solicitud PUT al servidor para guardar los cambios
+            fetch(URL + 'reserva', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(cancelarreserva)
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al guardar los cambios del producto.');
+                    }
+                })
+                .then(function (data) {
+                    alert('Cambios guardados correctamente.');
+                    location.reload(); // Recargamos la página para volver al formulario de consulta
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al guardar los cambios del producto.');
+                })
+        });
+
+
+
+
+
+
+
+
+
+
 
 
 

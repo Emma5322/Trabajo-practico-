@@ -212,6 +212,21 @@ class Reserva:
         return jsonify({'message': 'Producto agregado al carrito correctamente.'}), 200
 
 
+
+        def quitar(self, codigo, asientosliberados, inventario):
+            for item in self.items:
+                if item.codigo == codigo:
+                    item.asientoslibres -= asientosliberados
+                    if item.asintosliberados == 0:
+                        self.items.remove(item)
+                    self.cursor.execute("UPDATE vuelos SET asientoslibres = asientoslibres + ? WHERE codigo = ?",
+                                    (asientosliberados, codigo))
+                    self.conexion.commit()
+                    return jsonify({'message': 'Producto quitado del carrito correctamente.'}), 200
+
+        return jsonify({'message': 'El producto no se encuentra en el carrito.'}), 404
+
+
     def mostrar(self):
         vuelos_reserva = []
         for item in self.items:
@@ -231,7 +246,12 @@ reserva = Reserva()         # Instanciamos una reserva
 inventario = Inventario()   # Instanciamos un inventario
 #inventario.agregar_vuelo("LA515", "Vuelo a Catamarca", "B-747", 15, 60, 45, "CNQ", "Corrientes", "CTC", "Catamarca", "17:05", "19:15", "$7800")
 
-
+@app.route('/reserva', methods=['DELETE'])
+def quitar_reserva():
+    codigo = request.json.get('codigo')
+    asientosliberados = request.json.get('asientoslibres')
+    inventario = Inventario()
+    return reserva.quitar(codigo, asientosliberados, inventario)
 
 
 
