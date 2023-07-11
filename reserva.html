@@ -67,7 +67,7 @@
 
             
 
-            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de ida
+            // Realizamos la solicitud GET al servidor para obtener los datos de las reservas
             fetch(URL + 'reserva')
                 .then(function (response) {
                     if (response.ok) {
@@ -113,15 +113,18 @@
                 });
 
 
-                    // Mostramos el formulario de modificación y ocultamos el formulario de consulta
-
-                    
+                                       
                 })
                 .catch(function (error) {
                     // Código para manejar errores
                     alert('Error al obtener los datos del vuelo ahora.');
                 });
             });
+
+
+
+
+// Selector de reserva de vuelos a cancelar
 
 
             var asientosliberados = null;
@@ -143,7 +146,7 @@ console.log(asientosliberados)
 }
 
 
-
+//Volver a subir al servisor los asientos liberados de la reserva
 
 
 
@@ -184,13 +187,6 @@ document.getElementById('cancelarReserva').addEventListener('click', function (e
                     alert('Error al guardar los cambios del producto.');
                 })
         });
-
-
-
-
-
-
-
 
 
 
