@@ -220,7 +220,8 @@ class Reserva:
                 self.cursor.execute("UPDATE vuelos SET asientoslibres = asientoslibres + ? WHERE codigo = ?",
                                     (asientosliberados, codigo))
                 self.conexion.commit()
-            return jsonify({'message': 'Producto quitado del carrito correctamente.'}), 200
+                return jsonify({'message': 'Producto quitado del carrito correctamente.'}), 200
+
         #return jsonify({'message': 'El producto no se encuentra en el carrito.'}), 404
 
     def mostrar(self):
