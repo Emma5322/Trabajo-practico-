@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes Auricular</title>
+    <link rel="icon" href="Images/Viajes auricular.png">
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+
+<body>
+
+    <div class="conteiner">
+        <script type="text/javascript" src="header.js"></script>
+
+        <div class="izq"></div>
+        <div class="der"></div>
+
+        <div class="contenido">
+            <div class="formularioinicio">
+                <form onsubmit="return validarFormulario()">
+                    <div class="barrasuperiorinicio">
+                        <h1>Registrate</h1>
+                        <h3>Sumá millas y comenzá a disfrutar de tu próximo viaje</h3>
+                        <div>
+                            <label for=""> DNI: </label>
+                            <input type="text" id="dni" name="dni">
+                        </div>
+                        <div>
+                            <label for=""> Nombre/s: </label>
+                            <input type="text" id="nombres">
+                        </div>
+                        <div>
+                            <label for=""> Apellido/s: </label>
+                            <input type="text" id="apellidos">
+                        </div>
+                        <div>
+                            <label for=""> Mail: </label>
+                            <input type="text" id="mail">
+                        </div>
+                        <div>
+                            <label for=""> Nacionalidad: </label>
+                            <select name="Pais" id="nacional" name="nacional">
+                                <option value="0">Seleccioná nacionalidad</option>
+                                <option value="1">Afgano</option>
+                                <option value="2">Alemán</option>
+                                <option value="3">Argentino</option>
+                                <option value="4">Australiano</option>
+                                <option value="5">Austríaco</option>
+                                <option value="6">Belga</option>
+                                <option value="7">Boliviano</option>
+                                <option value="8">Brasileño</option>
+                                <option value="9">Británico</option>
+                                <option value="10">Búlgaro</option>
+                                <option value="11">Canadiense</option>
+                                <option value="12">Chileno</option>
+                                <option value="13">Chino</option>
+                                <option value="14">Colombiano</option>
+                                <option value="15">Croata</option>
+                                <option value="16">Cubano</option>
+                                <option value="17">Dominicano</option>
+                                <option value="18">Ecuatoriano</option>
+                                <option value="19">Escocés</option>
+                                <option value="20">Eslovaco</option>
+                                <option value="21">Español</option>
+                                <option value="22">Filipino</option>
+                                <option value="23">Finlandés</option>
+                                <option value="24">Francés</option>
+                                <option value="25">Guatemalteco</option>
+                                <option value="26">Holandés</option>
+                                <option value="27">Húngaro</option>
+                                <option value="28">Indio</option>
+                                <option value="29">Iraní</option>
+                                <option value="30">Irlandés</option>
+                                <option value="31">Israelí</option>
+                                <option value="32">Italiano</option>
+                                <option value="33">Japonés</option>
+                                <option value="34">Mexicano</option>
+                                <option value="35">Paraguayo</option>
+                                <option value="36">Peruano</option>
+                                <option value="37">Polaco</option>
+                                <option value="38">Ruso</option>
+                                <option value="39">Sueco</option>
+                                <option value="40">Suizo</option>
+                                <option value="41">Uruguayo</option>
+                                <option value="42">Venezolano</option>
+
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="Registrarme">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <script type="text/javascript" src="footer.js"></script>
+        </footer>
+        <script type="text/javascript" src="validacionRegistro.js"></script>
+    </div>
+</body>
+
+</html>

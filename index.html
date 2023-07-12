@@ -10,126 +10,552 @@
     <link rel="stylesheet" href="Estilo.css">
 </head>
 
-
 <body>
-
     <div class="conteiner">
-        <div class="header">
-            <div class="logo">
-
-                <img src="Images/Viajes auricular.png" alt="Viajes Auricular" width="50px" style="border-radius: 10px;">
-                <h1 class="nombreLogo">Viajes Auricular</h1>
-
-            </div>
-            <div class="Registro">
-
-                <div class="contacto">
-                    <img src="Images/telefono.PNG" alt="telefono" height="35px">
-                    <p>0800-AURI-1234</p>
-                </div>
-                <div class="inicio">
-                    <img src="Images/inicio.png" alt="" height="35px">
-                    <p>INICIAR SESIÓN</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="botonav navbar">
-            <div class="buscaTuVuelo">Busca tu vuelo</div>
-            <div class="promociones">Promociones</div>
-            <div class="clubAuri">Club Auri</div>
-            <div class="actividades">Actividades</div>
-        </div>
-
-
+        
+        <script type="text/javascript" src="header.js"></script>
+       
         <div class="izq"></div>
-        <div class="der"></div>
+
+        <div id="botonreserva" class="der" style="display: none;" >
+            <h2>Detalles de la reserva</h2>
+            <div id="detalleida">
+            </div>
+            <div id="detallevuelta">
+            </div>
+
+
+            <button onclick="reservarvuelo()" ">reservar</button>
+
+        </div>
 
         <div class="contenido">
-            <div class="formulario">
-                <div class="barrasuperior">
-                    <h1>Buscá tu vuelo</h1>
-                </div>
-                <div>
-                    <label for="">Origen</label>
-                    <input type="text">
-                    <label for="">Destino</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <button>Ida y vuelta</button>
-                    <button>Solo Ida</button>
-                    <button>Multiple destinos</button>
-                    <button>Todas las clases</button>
-                </div>
-                <div>
-                    <label for="">Ida</label>
-                    <label for="">Vuelta</label>
-                    <label for="">Adultos</label>
-                    <label for="">Niños</label>
-                    <label for="">Bebés</label>
-                </div>
-                <div>
-                    <input type="text">
-                    <input type="text">
-                    <input type="text">
-                    <input type="text">
-                    <input type="text">
-                </div>
+
+            <div class="formulario" id="formulariobusqueda" style="display: block;">
+                <form name="buscarvuelo" onsubmit="return validarBusquedaVuelo()">
+                    <div class="barrasuperior">
+                        <h1>Buscá tu vuelo</h1>
+                    </div>
+                    <div>
+                        <label for="">Origen</label>
+                        <input   list="browsers" id="origen" placeholder="Ingresá una ciudad">
+                            <datalist id="browsers" role="listbox">
+                                <option value="EZE">Buenos Aires - Argentina</option>
+                                <option value="FTE">El Calafate - Argentina</option>
+                                <option value="CTC">Catamarca - Argentina</option>
+                                <option value="CRD">Comodoro Rivadavia - Argentina</option>
+                                <option value="COR">Córdoba - Argentina</option>
+                                <option value=CNQ>Corrientes - Argentina</option>
+                                <option value="FMA">Formosa - Argentina</option>
+                                <option value="IGR">Iguazú - Argentina</option>
+                                <option value="JUJ">Jujuy - Argentina</option>
+                                <option value="IRJ">La Rioja - Argentina</option>
+                                <option value="MDQ">Mar del Plata - Argentina</option>
+                                <option value=MDZ>Mendoza - Argentina</option>
+                                <option value="NQN">Neuquén - Argentina</option>
+                                <option value="PRA">Paraná - Argentina</option>
+                                <option value="PSS">Posadas - Argentina</option>
+                                <option value="RSS">Resistencia - Argentina</option>
+                                <option value="RGL">Río Gallegos - Argentina</option>
+                                <option value="ROS">Rosario - Argentina</option>
+                                <option value="SLA">Salta - Argentina</option>
+                                <option value="BRC">San Carlos de Bariloche - Argentina</option>
+                                <option value="UAQ">San Juan - Argentina</option>
+                                <option value="LUQ">San Luis - Argentina</option>
+                                <option value="TUC">Tucumán - Argentina</option>
+                                <option value="SAF">Santa Fe - Argentina</option>
+                                <option value="RSA">Santa Rosa - Argentina</option>
+                                <option value="SGO">Santiago del Estero - Argentina</option>
+                                <option value="TRE">Trelew - Argentina</option>
+                                <option value="USH">Ushuaia - Argentina</option>
+                                <option value="VDM">Viedma - Argentina</option>
+                                <option value="CPC">Chapelco - Argentina</option>
+                               </datalist>
+                                                                      
+
+                        <label for="">Destino</label>
+                        <input  id="destino" list="browsers"  placeholder="Ingresá una ciudad">
+                                                   
+
+                        <label for="" id="labelsalida">Salida</label>
+                        <input type="date" id="inputsalida">
+                    </div>
+                    <div class="segundo" id="segundo">
+                        <label for="">Origen</label>
+                        <input id="origen2" list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="">Destino</label>
+                        <input id="destino2" list="browsers" type="text" placeholder="Ingresá una ciudad">
+                        <label for="">Salida</label>
+                        <input type="date" id="inputsalida2">
+                    </div>
+                    <div style="flex-direction: row;">
+                        <input type="radio" id="idayvuelta" name="seleccion" onclick="idaVuelta()" checked>
+                        <label for="">Ida y vuelta</label>
+                        <input type="radio" id="soloida" name="seleccion" onclick="soloIda()">
+                        <label for="">Solo ida</label>
+                        <input type="radio" id="multipledestino" name="seleccion" onclick="multipleDestinos()">
+                        <label for="">Multiple destinos</label>
+                        <select class="select" id="clase">
+                            <option value=1>Todas las clases</option>
+                            <option value="2">Clase económica</option>
+                            <option value="3">Clase ejecutiva</option>
+                        </select>
+                    </div>
+                    <div id="dividayvuelta">
+                        <label for="" id="ida">Ida</label>
+                        <input type="date" id="inputida">
+                        <label for="" id="labelvuelta">Vuelta</label>
+                        <input type="date" id="inputvuelta">
+                    </div>
+
+                </form>
+
             </div>
-            <div class="formulario2">
-                <div class="barrasuperior2">
-                    <h1>Pasajeros</h1>
-                </div>
+            <div class="formulario2" id="formulariovuelo" style="display: block;">
+                <form onsubmit="return validarBusquedaVuelo()">
+                    <div class="barrasuperior2">
+                        <h1>Pasajeros</h1>
+                        <div>
+                            <label for="">Mayores(+18)</label>
+                            <select id="adultos">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">Menores (2-17)</label>
+                            <select id="niños">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">Bebés (0-2)</label>
+                            <select id="bebes">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+
+                        </div>
+                        <div>
+                            <input type="submit" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
 
 
-        <div class="ofertas">
-            <div>
-                <h1>¡Aprovechá nuestras ofertas!</h1>
-            </div>
-            <div class="tablaviaje">
-                <div>
-                    <img src="Images/Rio de janeiro.jpg" alt="">
-                    <label for="">Rio de janeiro</label>
-                    <p>$54900</p>
+        <div id="itinerariovuelo" style="display: none;">
+            <div class="vuelos">
+                <div class="barrasuperiorvuelo">
+                    
+                    <div>
+                        <h1>Ida</h1>
+                        <h1 id="origenida">a</h1>
+                        <h1>----------></h1>
+                        <h1 id="destinoida">b</h1>
+                    </div>
                 </div>
-                <div>
-                    <img src="Images/Londres.jpg" alt="">
-                    <label for="">Londres</label>
-                    <p>$109899</p>
-                </div>
-                <div>
-                    <img src="Images/Francia.jpg" alt="">
-                    <label for="">Paris</label>
-                    <p>$119899</p>
-                </div>
-                <div>
-                    <img src="Images/New york.jpg" alt="">
-                    <label for="">New york</label>
-                    <p>$95989</p>
-                </div>
-            </div>
-        </div>
+                <div id="vuelosida">
 
-        <div class="redes">
-            <div class="info">
-                <p>Viajes Auricular Argentina S.A.</p>
-                    <p> Domicilio legal Santa Fe 100 - CABA </p>
-                    <p>Telefono de atención Tel: 0800-AURI-1234</p>
+                </div>
+
                 
             </div>
+            
+            <div class="vuelos">
+                <div class="barrasuperiorvuelo">
+                    <div>
+                    <h1>Vuelta</h1>
+                    <h1 id="origenvuelta">a</h1>
+                    <h1>----------></h1>
+                    <h1 id="destinovuelta">b</h1>
+                </div>
+                </div>
+                
+                <div id="vuelosvuelta">
+                </div> 
+            </div> 
+
+
+        </div>
+    </div>
+
+
+    <div class="ofertas">
+        <div>
+            <h1>¡Aprovechá nuestras ofertas!</h1>
+        </div>
+        <div class="tablaviaje">
             <div>
-                <p>Seguinos</p>
-                <a href="www.facebook.com"><img src="Images/facebook.PNG" alt=""></a>
-                <a href="www.facebook.com"><img src="Images/instagram.PNG" alt=""></a>
-                <a href="www.facebook.com"><img src="Images/tiktok.PNG" alt=""></a>
+                <img src="Images/Rio de janeiro.jpg" alt="">
+                <label for="">Rio de janeiro</label>
+                <p>$54900</p>
+            </div>
+            <div>
+                <img src="Images/Londres.jpg" alt="">
+                <label for="">Londres</label>
+                <p>$109899</p>
+            </div>
+            <div>
+                <img src="Images/Francia.jpg" alt="">
+                <label for="">Paris</label>
+                <p>$119899</p>
+            </div>
+            <div>
+                <img src="Images/New york.jpg" alt="">
+                <label for="">New york</label>
+                <p>$95989</p>
             </div>
         </div>
-
     </div>
+
+    <footer>
+        <script type="text/javascript" src="footer.js"></script>
+    </footer>
+    <script type="text/javascript" src="validacionbuscavuelo.js"></script>
+
+
+    <script>
+        //const URL = "http://127.0.0.1:5000/"
+        const URL = "https://emmanuel5322.pythonanywhere.com/";
+        
+
+        // Capturamos el evento de envío del formulario para mostrar el itinerario de los vuelos de ida
+        document.getElementById('formulariovuelo').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evitamos que se recargue la página
+
+            // Obtenemos el código del vuelo
+            var codigoorigen = document.getElementById('origen').value;
+            var codigodestino = document.getElementById('destino').value;
+            var idayvuelta = document.getElementById('idayvuelta').value;
+            var soloida = document.getElementById('soloida').value;
+            var multipledestino = document.getElementById('multipledestino').value;
+            var codigo = document.getElementById('clase').value;
+            
+            var inputvuelta = document.getElementById('inputvuelta').value;
+            var origen2 = document.getElementById('origen2').value;
+            var destino2 = document.getElementById('destino2').value;
+            var inputsalida = document.getElementById('inputsalida').value;
+            var inputsalida2 = document.getElementById('inputsalida2').value;
+    
+            
+            console.log(codigoorigen)
+            console.log(codigodestino)
+            console.log(idayvuelta)
+            console.log(soloida)
+            console.log(multipledestino)
+            console.log(inputida);
+            console.log(inputvuelta)
+            console.log(origen2)
+            console.log(destino2)
+            console.log(inputsalida)
+            console.log(inputsalida2)
+            console.log(codigo)
+
+            
+
+            
+
+            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de ida
+            fetch(URL + 'vuelos/' + codigoorigen + '/' + codigodestino)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al obtener la busqueda vuelo');
+                    }
+                })
+                .then(function (data) {
+                    var vuelosida = document.getElementById('vuelosida');
+
+
+                    data.forEach(function (vuelo) {
+
+                var fila = document.createElement('div');
+                console.log(fila)
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloIda(event)">'+
+                  '<div class="pruebaflex2">'+
+                        '<label>'  + vuelo.codigo + '</label>'+
+                        '<label>' + vuelo.numerovuelo + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigoorigen + '</h1>'+
+                        '<label>' + vuelo.horariosalida + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<img src="Images/avion.png" height="40px">'+
+                        '<label>Asientos libres: ' + vuelo.asientoslibres + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigodestino + '</h1>'+
+                        '<label>' + vuelo.horariollegada + '</label>'+
+                        '</div>'+  
+                    '<div class="pruebaflex2">'+
+                        '<label>Precio</label>' +
+                        '<label>' + vuelo.precio + '</label>' 
+                    '</div>'+
+                    '</div>';
+                vuelosida.appendChild(fila);
+                document.getElementById('origenida').innerHTML = vuelo.origen; 
+                document.getElementById('destinoida').innerHTML = vuelo.destino; 
+                var asientoslibresida = vuelo.asientoslibres
+                });
+
+
+                    // Mostramos el formulario de modificación y ocultamos el formulario de consulta
+                    document.getElementById('formulariovuelo').style.display = 'none';
+                    document.getElementById('formulariobusqueda').style.display = 'none';
+                    document.getElementById('itinerariovuelo').style.display = 'block';
+                    document.getElementById('botonreserva').style.display = 'block';
+                    
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al obtener los datos del vuelo ahora.');
+                });
+
+            // Realizamos la solicitud GET al servidor para obtener los datos del vuelo de vuelta
+            fetch(URL + 'vuelos/' + codigodestino + '/' + codigoorigen)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al obtener la busqueda vuelo');
+                    }
+                })
+                .then(function (data) {
+                    var vuelosvuelta = document.getElementById('vuelosvuelta');
+
+
+                    data.forEach(function (vuelo) {
+
+
+                var fila = document.createElement('div');
+                fila.innerHTML = '<div id="' + vuelo.codigo + '" class="pruebaflex" value="' + vuelo.codigo + '" onclick="reservaVueloVuelta(event)">'+
+                    '<div class="pruebaflex2">'+
+                        '<label>'  + vuelo.codigo + '</label>'+
+                        '<label>' + vuelo.numerovuelo + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigoorigen + '</h1>'+
+                        '<label>' + vuelo.horariosalida + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<img src="Images/avion.png" height="40px">'+
+                        '<label>Asientos libres: ' + vuelo.asientoslibres + '</label>'+
+                    '</div>'+
+                    '<div class="pruebaflex2">'+
+                        '<h1>' + vuelo.codigodestino + '</h1>'+
+                        '<label id="horariollegada">' + vuelo.horariollegada + '</label>'+
+                        '</div>'+  
+                    '<div class="pruebaflex2">'+
+                        '<label>Precio</label>' +
+                        '<label>' + vuelo.precio + '</label>' +
+                    '</div>';
+                vuelosvuelta.appendChild(fila);
+                document.getElementById('origenvuelta').innerHTML = vuelo.origen; 
+                document.getElementById('destinovuelta').innerHTML = vuelo.destino; 
+                var asientoslibresvuelta = vuelo.asientoslibres
+
+
+                });
+
+
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al obtener los datos del vuelo ahora.');
+                });
+        });
+
+
+
+        // Capturamos el evento de envío del formulario de modificación
+        document.getElementById('botonreserva').addEventListener('click', function (event) {
+            event.preventDefault(); // Evitamos que se recargue la página
+
+            // Obtenemos los valores del formulario de modificación
+            //var codigo = document.getElementById('codigo').value; 
+            
+            var adultos = document.getElementById('adultos').value;
+            var niños = document.getElementById('niños').value;
+            var bebes = document.getElementById('bebes').value;
+
+
+            var asientos = parseInt(adultos) + parseInt(niños) + parseInt(bebes);
+
+
+            console.log(asientos);
+
+            // Creamos un objeto con los datos del producto actualizados
+            var reserva = {
+                //codigo: codigo,
+                valorida: valorida,
+                valorvuelta: valorvuelta,
+                asientos: asientos,
+               
+            };
+            console.log(reserva);
+            // Realizamos la solicitud PUT al servidor para guardar los cambios
+            fetch(URL + 'vuelos/' + valorida + '/' + valorvuelta, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reserva)
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parseamos la respuesta JSON
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al guardar los cambios del producto.');
+                    }
+                })
+                .then(function (data) {
+                    alert('Cambios guardados correctamente.');
+                    location.reload(); // Recargamos la página para volver al formulario de consulta
+                })
+                .catch(function (error) {
+                    // Código para manejar errores
+                    alert('Error al guardar los cambios del producto.');
+                })
+        });
+
+
+
+
+
+
+
+
+//agregar vuelos a la reserva de vuelos
+var valorida = null;
+        function reservaVueloIda(event) {
+  var div = event.target;
+  console.log(div);
+  valorida = div.getAttribute("value");
+ 
+  var codigoida1 = div.getElementsByTagName("h1")[0].innerHTML;
+  var codigoida2 = div.getElementsByTagName("h1")[1].innerHTML;
+  var precioida = div.getElementsByTagName("label")[6].innerHTML;
+  var inputida = document.getElementById('inputida').value;
+
+  var detalleida = document.getElementById("detalleida");
+
+  detalleida.innerHTML = '<div>'+
+                '<label>IDA</label>'+
+                '<label>' + inputida + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>' + codigoida1 + '</label>'+
+                '<label>---></label>'+
+                '<label>' + codigoida2 + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>Precio</label>'+ 
+                '<label>' + precioida + '</label>'+
+                '</div>';
+
+   document.getElementById(valorida).style.backgroundColor = "rgb(196, 192, 196)";
+
+}
+
+
+
+
+
+var valorvuelta = null;
+function reservaVueloVuelta(event) {
+  var div = event.target;
+  valorvuelta = div.getAttribute("value");
+ console.log(valorvuelta);
+
+ var codigovuelta1 = div.getElementsByTagName("h1")[0].innerHTML;
+  var codigovuelta2 = div.getElementsByTagName("h1")[1].innerHTML;
+  var precioida = div.getElementsByTagName("label")[6].innerHTML;
+  var inputvuelta = document.getElementById('inputvuelta').value;
+
+  var detalleida = document.getElementById("detallevuelta");
+
+  detalleida.innerHTML = '<div>'+
+                '<label>IDA</label>'+
+                '<label>' + inputvuelta + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>' + codigovuelta1 + '</label>'+
+                '<label>---></label>'+
+                '<label>' + codigovuelta2 + '</label>'+
+                '</div>'+
+                '<div>'+
+                '<label>Precio</label>'+ 
+                '<label>' + precioida + '</label>'+
+                '</div>';
+
+
+
+
+
+
+
+
+document.getElementById(valorvuelta).style.backgroundColor = "rgb(196, 192, 196)";
+
+}
+
+
+
+
+
+
+
+
+
+function reservarvuelo(){
+
+
+    console.log (valorida);
+    console.log (valorvuelta);
+
+
+
+        if (valorvuelta == null && valorida == null ) {
+        alert("Por favor, seleccionar los vuelos");
+        return false; 
+    }
+
+
+    if (valorida == null) {
+        alert("Por favor, seleccionar el vuelo de ida.");
+        return false; 
+    }
+
+    if (valorvuelta == null ) {
+        alert("Por favor, seleccionar el vuelo de vuelta");
+        return false; 
+    }
+
+}
+
+    </script>
+</div>
+
+
 </body>
 
 </html>
