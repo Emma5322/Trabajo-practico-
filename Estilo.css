@@ -5,16 +5,18 @@
 
 body {
     margin: 0px;
+
 }
 
 
 /*----------------------------------------------------------------*/
 /* Definir el grid para todo el documento                         */
+/*----------------------------------------------------------------*/
 
 .conteiner {
     display: grid;
 
-    grid-template: 90px 70px 300px auto auto / 10% auto auto auto 10%;
+    grid-template: 100px 80px auto auto auto/ 15% auto auto auto 15%;
 
     /* Distribuimos el contenido en cada fila */
     grid-template-areas: "header header header header header"
@@ -22,7 +24,9 @@ body {
         "izq contenido contenido contenido der"
         "izq ofertas ofertas ofertas der"
         "redes redes redes redes redes";
-
+ 
+        
+       min-height: 100vh;
 
 }
 
@@ -57,6 +61,7 @@ body {
 .contenido {
     display: flex;
     grid-area: contenido;
+    justify-content: center;
     background-color: white;
 }
 
@@ -66,14 +71,16 @@ body {
 
 }
 
-.redes {
+footer {
     grid-area: redes;
     background-color: rgb(111, 109, 111);
-}
+    
+    }
 
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos el header                           */
+/*----------------------------------------------------------------*/
 
 .logo {
     padding: 10px;
@@ -98,6 +105,12 @@ body {
     padding: 0 1rem;
 }
 
+.inicio a {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    color: rgb(111, 109, 111);
+}
 
 
 .Registro {
@@ -122,15 +135,17 @@ body {
 }
 
 
-
 .botonav div {
-    padding: 10px;
+    justify-content: center;
+    padding: 0px;
     margin: 5px 5px 10px;
     background-color: rgb(255, 199, 28);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 0 0 10px 10px;
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    display: inline;
 }
+
 
 
 .buscaTuVuelo:hover,
@@ -140,10 +155,29 @@ body {
     transform: translate(2px, 2px);
 }
 
+.botonav a {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+
+
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan el el contenido*/
+/*----------------------------------------------------------------*/
+
 
 .formulario {
+    min-width: 400px;
+    max-width: 600px;
     background-color: rgb(242, 242, 242);
     margin: 10px 0px 10px 10px;
     width: 65%;
@@ -156,10 +190,117 @@ body {
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
+
+.pruebaflex{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+    border-top: dashed;
+
+}
+
+.pruebaflex2{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.vuelos {
+    min-width: 600px;
+    max-width: 900px;
+    background-color: rgb(242, 242, 242);
+    margin: 10px 0px 10px 10px;
+    width: 65%;
+    border-color: black;
+    border-right: solid;
+    border-top: solid;
+    border-bottom: solid;
+    border-left: solid;
+    border-radius: 30px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+#detalleida {
+display: flex;
+flex-direction: column;
+background-color: rgb(242, 242, 242);
+border: solid 1px;
+  
+}
+
+#detalleida div{
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 1px;
+  
+
+    }
+
+    #detallevuelta {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(242, 242, 242);
+        border: solid 1px;
+        margin-top: 10px;
+          
+        }
+        
+        #detallevuelta div{
+            display: flex;
+            justify-content: space-evenly;
+            border: solid 1px;
+          
+        
+            }
+    
+
+.barrasuperiorvuelo {
+
+    position: sticky;
+    top: 0;
+    }
+
+    .opcion-seleccionada {
+        background-color: yellow;
+      }
+
+.barrasuperiorvuelo div {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(206, 55, 62);
+    margin-top: 0px;
+    border-radius: 30px 30px 0px 0px;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    position: sticky;
+    top: 0;
+    }
+
+.pruebaflex:hover {
+    background-color: rgb(196, 192, 196);
+}
+
+
+.formulario div:nth-child(1n+2) {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px
+}
+
+.formulario div select {
+    border-radius: 20px;
+
+}
+
 .formulario2 {
+    min-width: 200px;
+    max-width: 300px;
     background-color: rgb(242, 242, 242);
     margin: 10px 10px 10px 0px;
-
     width: 35%;
     border-color: black;
     border-right: solid;
@@ -171,11 +312,106 @@ body {
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
-.formulario input {
+.formulario2 div:nth-child(1n+2) {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.formulario2 div select {
     border-radius: 5px;
     margin: 5px;
+    width: 40%;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
+}
+
+.formulario2 div input {
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 199, 28);
+}
+
+input {
+    border-radius: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 40%;
     border-color: rgb(111, 109, 111);
     border-style: solid;
+}
+
+
+label {
+    margin: 10px;
+}
+
+button {
+    background-color: rgb(180, 179, 180);
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid;
+
+}
+
+.select {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
+}
+
+
+.formularioinicio {
+    background-color: rgb(242, 242, 242);
+    margin: 10px;
+    min-width: 500px;
+    max-width: 600px;
+    width: 50%;
+    text-align: center;
+    border-color: black;
+    border-style: solid;
+    border-radius: 30px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.barrasuperiorinicio>h1 {
+    background-color: rgb(206, 55, 62);
+    margin-top: 0px;
+    
+
+    border-radius: 30px 30px 0px 0px;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.barrasuperiorinicio div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20%;
+}
+
+.barrasuperiorinicio div input {
+    width: 55%;
+}
+
+.barrasuperiorinicio div select {
+    width: 55%;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: rgb(111, 109, 111);
+}
+.barrasuperiorinicio div input[type=submit] {
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 199, 28);
 }
 
 .barrasuperior>h1 {
@@ -200,6 +436,7 @@ body {
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos de las cosas que estan en la oferta*/
+/*----------------------------------------------------------------*/
 
 .ofertas h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -219,7 +456,6 @@ body {
 .tablaviaje div {
     border: 2px;
     flex: 1 0 200px;
-
     margin: 10px;
     padding: 0px;
     background-color: rgb(255, 199, 28);
@@ -236,6 +472,11 @@ body {
     border-radius: 20px 20px 0px 0px;
 }
 
+
+
+
+
+
 .tablaviaje label,
 p {
     padding: 5px;
@@ -248,7 +489,178 @@ p {
     transform: scale(1.1);
 }
 
+/*----------------------------------------------------------------*/
+/* Definicion de los estilos de las cosas que estan en promociones                */
+/*----------------------------------------------------------------*/
 
+.tablapromociones {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+.tablapromociones div {
+    border: 2px;
+    flex: 1 0 200px;
+
+    margin: 10px;
+    padding: 0px;
+    background-color: rgb(255, 199, 28);
+    border-radius: 20px 20px 5px 20px;
+    z-index: 10;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+
+}
+
+.tablapromociones>div>img {
+    z-index: -10;
+    height: 140px;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.tablapromociones>div:hover {
+    transform: scale(1.1);
+}
+
+.beneficios {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgb(18, 3, 101);
+    margin: 5% 10% 5% 10%;
+}
+
+/*----------------------------------------------------------------*/
+/* Definicion de los estilos de las cosas que estan en clubauri                */
+/*----------------------------------------------------------------*/
+
+
+.tituloclub {
+background-color: rgb(206, 55, 62);
+    margin-top: 0px;
+    border-radius: 30px 30px 0px 0px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    
+    
+}
+.clubmillas {
+    width: 70%;
+	max-width: 1100px;
+	margin: auto;
+	padding: 40px;
+    
+    
+}
+
+.millas1 {
+	display: flex;
+	flex-wrap: wrap; 
+   gap: 1%;
+}
+
+.card {
+    border-radius: 20px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    position: relative;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+    min-height: 200px;
+    width: 49.5%;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/469/230/small/abstract-white-and-gray-light-gradient-lines-background-free-vector.jpg');    
+}
+
+.clientes div{
+    display: flex;
+    width: 100%;
+    
+}
+
+.opiniones div{
+    display: flex;
+    flex-direction: colum;
+
+
+}
+.tarjeta {
+    display: flex;
+    padding: 20px;
+   
+}
+
+.tarjeta img {
+    border-radius: 50%;
+    margin: 20px;
+    height: 160px;
+width: 160px;
+}
+
+.tarjeta div {
+ flex-direction: column;
+}
+
+/*----------------------------------------------------------------*/
+/* Definicion de los estilos de las cosas que estan en actividades                */
+/*----------------------------------------------------------------*/
+
+.tabladeactividades {
+
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2px;
+}
+
+.act {
+    min-height: 200px;
+    max-width: 500px;
+    font-weight: bold;
+
+}
+
+.tabladeactividades div {
+    border: 2px;
+    flex: 1 0 200px;
+    margin: 10px;
+    padding: 0px;
+    background-color: rgb(255, 199, 28);
+    border-radius: 20px 20px 5px 20px;
+    z-index: 10;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    transition: transform 1s;
+}
+
+.tabladeactividades>div>img {
+    z-index: -10;
+    height: 140px;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.tabladeactividades>div:hover {
+    transform: scale(1.1);
+}
+
+.tituloact {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos en el footer        */
@@ -259,8 +671,13 @@ p {
     justify-content: space-between;
 }
 
+.redes img {
+    mix-blend-mode: color-burn;
+}
 
-
+.mapa {
+    margin: 1% 35% 5% 2%;
+}
 
 /*----------------------------------------------------------------*/
 /* Definicion de los estilos en los distintos media query          */
@@ -268,7 +685,7 @@ p {
 @media only screen and (max-width: 920px) {
     .conteiner {
         /* Uso un atajo para definir 3 filas / 2 columna */
-        grid-template: auto auto auto 1000 auto / 25% 25% 25% 25%;
+        grid-template: auto auto auto auto auto / 25% 25% 25% 25%;
 
         /* Distribuimos el contenido en cada fila */
         /* Desaparecen columnas der e izq */
@@ -280,6 +697,9 @@ p {
             "redes redes redes redes";
     }
 
+    .tablapromociones {
+        grid-template-columns: auto auto;
+    }
 
 }
 
@@ -288,7 +708,7 @@ p {
 @media only screen and (max-width: 600px) {
     .conteiner {
         /* Uso un atajo para definir 3 filas / 2 columna */
-        grid-template: auto auto 600px auto / auto auto auto;
+        grid-template: auto / 20% 60% 20%;
 
         /* Distribuimos el contenido en cada fila */
         grid-template-areas:
@@ -296,7 +716,7 @@ p {
             "navbar navbar navbar"
             "contenido contenido contenido"
             "ofertas ofertas ofertas"
-            "redes redes redes";
+            "redes redes redes"
     }
 
     .navbar {
@@ -336,11 +756,23 @@ p {
         border-left: solid;
     }
 
+    .formularioinicio {
+
+        margin: 5px;
+        width: auto;
+        min-width: 0px;
+        border-radius: 30px;
+        border-color: black;
+        border-style: solid;
+    }
+
     .barrasuperior>h1 {
         border-radius: 30px 30px 0px 0px;
     }
 
     .formulario2 {
+        min-width: 400px;
+        max-width: 600px;
         margin: 0px 5px 5px 5px;
         border-radius: 0px 0px 30px 30px;
         width: auto;
@@ -354,7 +786,7 @@ p {
     }
 
     .barrasuperior2 {
-        display: table-cell;
+
         vertical-align: bottom;
 
         border-radius: 0px 0px 30px 30px;
@@ -363,12 +795,69 @@ p {
     }
 
     .barrasuperior2 h1 {
+        display: none;
         border-radius: 0px 0px 30px 30px;
         margin: 0px;
+
+        vertical-align: bottom;
     }
 
     .info {
         display: none;
     }
+
+    .formulario div:nth-child(2n) {
+        display: flex;
+        flex-direction: column;
+        margin: 10px
+    }
+
+    input {
+        width: 95%;
+
+    }
+
+    .tabladeactividades {
+        grid-template-columns: auto auto;
+        width: 100%;
+    }
+
+    .tablapromociones {
+        grid-template-columns: auto auto;
+        width: 100%;
+    }
+
+    .beneficios {
+        margin: 10px;
+    }
+
+    .segundo {
+        flex-direction: column;
+    }
+
+    .inputs {
+        display: flex;
+    }
+
+  .opiniones div{
+    flex-direction: column;
+  }
+  .clubmillas {
+    width: 95%;
+	padding: 0px;
+	margin: auto;
+}
+
+.redes {
+    margin: 20px;
+    flex-direction: column-reverse;
+    
+}
+
+.mapa {
+    
+   margin-top: 20px
+    
+}
 
 }
