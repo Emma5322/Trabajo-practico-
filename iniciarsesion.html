@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="Images/Viajes auricular.png">
+    <link rel="stylesheet" href="Estilo.css">
+
+</head>
+
+<body>
+
+    <div class="conteiner">
+        <script type="text/javascript" src="header.js"></script>
+
+
+        <div class="izq"></div>
+        <div class="der"></div>
+        <div class="contenido">
+            <div class="formularioinicio">
+                <form onsubmit="return validarFormularioinicio()">
+                    <div class="barrasuperiorinicio">
+                        <h1>Iniciar sesión</h1>
+
+                        <div>
+                            <label for="usuario">Usuario</label>
+                            <input type="text" id="usuario" name="usuario">
+
+                        </div>
+                        <div>
+                            <label for="passw">Contraseña</label>
+                            <input type="password" id="passw" name="passw">
+
+                        </div>
+                        <div>
+                            <input type="submit" value="Iniciar">
+                        </div>
+
+                        <label for="recordar"> <a href="recuperarclave.html">¿Olvidaste tu contraseña?</a></label>
+
+                        <h4> <a href="registro.html">¿Todavía no te registraste?</a> </h4>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="ofertas"></div>
+        <footer>
+            <script type="text/javascript" src="footer.js"></script>
+        </footer>
+
+        <script type="text/javascript" src="validacioniniciarsesion.js"></script>
+    </div>
+</body>
+
+</html>
